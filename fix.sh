@@ -6,5 +6,5 @@ rm -f $FILES
 for i in $FILES
 do
     echo $i
-    ln dotfiles/$i
+    ln -s dotfiles/$i $i
 done
