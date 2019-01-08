@@ -1,16 +1,20 @@
+# aliases and functions
 if [ -z "$PS1" ]; then return; fi
 if [ "$BASHRC" == "YES" ]; then return; fi
 export BASHRC=YES
 
 if [ -r /etc/bash_completion ]; then . /etc/bash_completion; fi
-if [ -r ~/.bashrc_private ]; then . ~/.bashrc_private fi
+if [ -r ~/.bashrc_private ]; then . ~/.bashrc_private; fi
 
 if [ `uname` == Darwin ]; then
-    LS='ls -GF'
+    function lshelper() {
+        CLICOLOR_FORCE=1 /bin/ls -GFC ${*:1:1} ${*:2} | more -R
+    }
     alias o='open'
 elif [ `uname` == Linux ]; then
-
-    LS='ls --color=auto -F'
+    function lshelper() {
+        /bin/ls -F --color=always ${*:1:1} ${*:2} | more -R
+    }
     alias o='xdg-open $*'
     alias listening='netstat --tcp --listening'
     OS=`head -1 /etc/issue | cut -d " " -f 1`
@@ -31,15 +35,14 @@ elif [ `uname` == Linux ]; then
     fi
 fi
 
-alias ls="$LS"
-# if's because 'ls ""' gives an error message
-function la () { if [[ "$*" != "" ]]; then $LS -a "$*" | more; else $LS -a | more; fi }
-function lla () { if [[ "$*" != "" ]]; then $LS -al "$*" | more; else $LS -al | more; fi }
-function lr () { if [[ "$*" != "" ]]; then $LS -R "$*" | more; else $LS -R | more; fi }
-function llr () { if [[ "$*" != "" ]]; then $LS -lR "$*" | more; else $LS -lR | more; fi }
-function ll () { if [[ "$*" != "" ]]; then $LS -l "$*" | more; else $LS -l | more; fi }
-function lt () { if [[ "$*" != "" ]]; then $LS -lt "$*" | more; else $LS -lt | more; fi }
-function lS () { if [[ "$*" != "" ]]; then $LS -lS "$*" | more; else $LS -lS | more; fi }
+alias ls='lshelper'
+alias la='lshelper -a'
+alias ll='lshelper -l'
+alias lla='lshelper -al'
+alias lr='lshelper -R'
+alias llr='lshelper -lR'
+alias lt='lshelper -t'
+alias llt='lshelper -lt'
 
 function tolower () { echo "$*" | tr '[:upper:]' '[:lower:]'; }
 function toupper () { echo "$*" | tr '[:lower:]' '[:upper:]'; }
@@ -64,7 +67,7 @@ alias potm='wget -q -O - http://www.moongiant.com/phase/today/ | grep "Moon Age"
 
 alias green="find . -name '*.gif' -exec dirname '{}' ';' | uniq | xargs ~/bin/finder_colors.py green"
 
-function best() { agrep -B $@ /usr/share/dict/words }
+function best() { agrep -B $@ /usr/share/dict/words; }
 
 function unzipper ()
 {

@@ -2,7 +2,8 @@ if [ -z "$PS1" ]; then return; fi
 if [ "$BASH_PROFILE" == "YES" ]; then return; fi
 BASH_PROFILE=YES
 
-# if [ -e ~/.bashrc ]; then . ~/.bashrc; fi
+if [ -e ~/.bashrc ]; then . ~/.bashrc; fi
+if [ -e ~/bin/bash-powerline.sh ]; then . ~/bin/bash-powerline.sh; fi
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
