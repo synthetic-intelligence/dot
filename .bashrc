@@ -8,12 +8,12 @@ if [ -r ~/.bashrc_private ]; then . ~/.bashrc_private; fi
 
 if [ `uname` == Darwin ]; then
     function lshelper() {
-        CLICOLOR_FORCE=1 /bin/ls -GFC ${*:1:1} ${*:2} | less -R
+        CLICOLOR_FORCE=1 /bin/ls -CFG ${*:1:1} ${*:2} | less -eRX
     }
     alias o='open'
 elif [ `uname` == Linux ]; then
     function lshelper() {
-        /bin/ls -CF --color=always ${*:1:1} ${*:2} | less -R
+        /bin/ls -CF --color=always ${*:1:1} ${*:2} | less -eRX
     }
     alias o='xdg-open $*'
     alias listening='netstat --tcp --listening'
