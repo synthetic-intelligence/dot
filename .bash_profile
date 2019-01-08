@@ -5,8 +5,12 @@ BASH_PROFILE=YES
 if [ -e ~/.bashrc ]; then . ~/.bashrc; fi
 if [ -e ~/bin/bash-powerline.sh ]; then . ~/bin/bash-powerline.sh; fi
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+if [ -x "$(command -v brew)" ]
+then
+    if [ -f $(brew --prefix)/etc/bash_completion ]
+    then
+        . $(brew --prefix)/etc/bash_completion
+    fi
 fi
 
 umask 077
@@ -83,5 +87,7 @@ do
     fi
 done
 
-eval "$(rbenv init -)"
-
+if [ -x "$(command -v rbenv)" ]
+then
+    eval "$(rbenv init -)"
+fi
