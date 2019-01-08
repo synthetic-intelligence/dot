@@ -13,7 +13,7 @@ if [ `uname` == Darwin ]; then
     alias o='open'
 elif [ `uname` == Linux ]; then
     function lshelper() {
-        /bin/ls -F --color=always ${*:1:1} ${*:2} | less -R
+        /bin/ls -CF --color=always ${*:1:1} ${*:2} | less -R
     }
     alias o='xdg-open $*'
     alias listening='netstat --tcp --listening'
