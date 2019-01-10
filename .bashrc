@@ -61,7 +61,7 @@ alias mvn='mvn -q'
 alias d='docker'
 alias dstopall='docker stop $(docker ps -aq)'
 alias drmall='docker rm $(docker ps -aq)'
-alias drmiall='docker rmi $(docker ps -aq)'
+alias drmiall='docker rmi -f $(docker images -q)'
 
 alias potm='wget -q -O - http://www.moongiant.com/phase/today/ | grep "Moon Age" | sed -e "s/.*\"Moon Age:/Moon Age:/" -e "s/\".*//"'
 
