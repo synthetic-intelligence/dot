@@ -8,12 +8,12 @@ if [ -r ~/.bashrc_private ]; then . ~/.bashrc_private; fi
 
 if [ `uname` == Darwin ]; then
     function lshelper() {
-        CLICOLOR_FORCE=1 /bin/ls -CFG ${@:1:1} "${@:2}" | less -eRX
+        CLICOLOR_FORCE=1 /bin/ls -CFG ${@:1:1} "${@:2}" | less -eRXF
     }
     alias o='open'
 elif [ `uname` == Linux ]; then
     function lshelper() {
-        /bin/ls -CF --color=always ${@:1:1} "${@:2}" | less -eRX
+        /bin/ls -CF --color=always ${@:1:1} "${@:2}" | less -eRXF
     }
     alias o='xdg-open $*'
     alias listening='netstat --tcp --listening'
@@ -91,7 +91,7 @@ alias rmthumbs="find -E . -regex '.*\.(jpg|gif|png)' -a -size -7k -exec rm '{}' 
 
 alias unquarantine='xattr -dr com.apple.quarantine'
 
-function cd () { builtin cd "$*"; $LS; }
+function cd () { builtin cd "$*"; lshelper; }
 function pd () { if [[ $# == 0 ]]; then pushd; else pushd $*; fi; $LS; }
 function deepgrep () { find . -type f -not -name '*\.svn*' -not -name '*,v' -exec grep -I "$*" '{}' ';' -print; }
 function deepgrepi () { find . -type f -not -name '*\.svn*' -not -name '*,v' -exec grep -i -I "$*" '{}' ';' -print; }
