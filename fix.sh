@@ -1,7 +1,7 @@
 #! /bin/bash
 
 cd ~
-FILES='.bash_profile .bashrc bin/choice bin/bash-powerline.sh'
+FILES='.vimrc .bash_profile .bashrc bin/choice bin/bash-powerline.sh'
 rm -f $FILES
 for i in $FILES
 do
