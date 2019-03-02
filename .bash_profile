@@ -15,7 +15,7 @@ fi
 
 umask 077
 
-export FIGNORE=".DS_Store:.html"
+export FIGNORE=".DS_Store"
 export GLOBIGNORE=".DS_Store"
 export PS1='\u@\h->\W\$ '
 export EDITOR=vi

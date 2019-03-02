@@ -1,5 +1,4 @@
 # aliases and functions
-if [ -z "$PS1" ]; then return; fi
 if [ "$BASHRC" == "YES" ]; then return; fi
 export BASHRC=YES
 
@@ -16,7 +15,6 @@ elif [ `uname` == Linux ]; then
         /bin/ls -CF --color=always ${@:1:1} "${@:2}" | less -eRXF
     }
     alias o='xdg-open $*'
-    alias listening='netstat --tcp --listening'
     OS=`head -1 /etc/issue | cut -d " " -f 1`
     if [ $OS == Ubuntu ]; then
         alias list='dpkg --list'
@@ -35,6 +33,7 @@ elif [ `uname` == Linux ]; then
     fi
 fi
 
+alias listening='netstat -anp tcp | grep "LISTEN"'
 alias ls='lshelper'
 alias la='lshelper -a'
 alias ll='lshelper -l'
