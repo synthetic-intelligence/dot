@@ -1,0 +1,2 @@
+unset BASHRC
+shell $SHELL -l
