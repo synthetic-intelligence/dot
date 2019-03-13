@@ -58,6 +58,8 @@ alias mvncd='cd ../../../../../../..'
 alias mvn='mvn -q'
 
 alias d='docker'
+alias dps='docker ps'
+alias dpsa='docker ps -a'
 alias dstopall='docker stop $(docker ps -aq)'
 alias drmall='docker rm $(docker ps -aq)'
 alias drmiall='docker rmi -f $(docker images -q)'
