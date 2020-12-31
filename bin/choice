@@ -1,4 +1,4 @@
-#! /bin/bash -e
+#!/usr/bin/env bash -e
 
 filename=".choices"
 
@@ -50,7 +50,7 @@ IFS=$'\n'
 # otherwise, give them a choice and remember it in their history.
 select CHOICE in `cat $filename`
 do
-    echo "$CHOICE" >> ~/.bash_history
+    history -s "$CHOICE"
     eval $CHOICE $*
     break
 done

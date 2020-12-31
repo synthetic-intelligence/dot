@@ -1,9 +1,9 @@
 syn on
+set modeline
 set	background=dark
 set	ru nocp sc wmnu bg=light
 set	ai autowrite ignorecase nowarn nowrapscan
 set	redraw sm wm=5
-" set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab

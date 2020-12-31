@@ -1,27 +1,28 @@
 # aliases and functions
-if [ "$BASHRC" == "YES" ]; then return; fi
+if [[ "$BASH_VERSION" != "" && "$BASHRC" == "YES" ]]; then return; fi
 export BASHRC=YES
 
-if [ -r /etc/bash_completion ]; then . /etc/bash_completion; fi
-if [ -r ~/.bashrc_private ]; then . ~/.bashrc_private; fi
+if [[ "${ZSH_VERSION}" != "" && -r /etc/bash_completion ]]; then . /etc/bash_completion; fi
 
-if [ `uname` == Darwin ]; then
-    function lshelper() {
-        CLICOLOR_FORCE=1 /bin/ls -CFG ${@:1:1} "${@:2}" | less -eRXF
+if [[ -r ~/.bashrc_private ]]; then . ~/.bashrc_private; fi
+
+if [[ `uname` == Darwin ]]; then
+    function lshelper () {
+        CLICOLOR_FORCE=1 /bin/ls -CFG ${@:1:1} "${@:2}" | less -ERXF
     }
     alias o='open'
-elif [ `uname` == Linux ]; then
-    function lshelper() {
-        /bin/ls -CF --color=always ${@:1:1} "${@:2}" | less -eRXF
+elif [[ `uname` == Linux ]]; then
+    function lshelper () {
+        /bin/ls -CF --color=always ${@:1:1} "${@:2}" | less -ERXF
     }
     alias o='xdg-open $*'
     OS=`head -1 /etc/issue | cut -d " " -f 1`
-    if [ $OS == Ubuntu ]; then
+    if [[ $OS == Ubuntu ]]; then
         alias list='dpkg --list'
         alias update='sudo apt-get update'
         alias pfind="apt-cache showpkg"
         alias pinstall="sudo apt-get install"
-    elif [ $OS == CentOS ]; then
+    elif [[ $OS == CentOS ]]; then
         alias update='sudo yum update'
         alias pfind="yum info"
         alias pinstall="sudo yum install"
@@ -33,6 +34,7 @@ elif [ `uname` == Linux ]; then
     fi
 fi
 
+alias shrug='echo ¯\_(ツ)_/¯'
 alias listening='netstat -anp tcp | grep "LISTEN"'
 alias ls='lshelper'
 alias la='lshelper -a'
@@ -61,8 +63,9 @@ alias d='docker'
 alias dps='docker ps'
 alias dpsa='docker ps -a'
 alias dstopall='docker stop $(docker ps -aq)'
-alias drmall='docker rm $(docker ps -aq)'
+alias drmall='docker stop $(docker ps -aq) && docker rm $(docker ps -aq)'
 alias drmiall='docker rmi -f $(docker images -q)'
+alias drmvall='docker volume rm $(docker volume ls -q)'
 
 alias potm='wget -q -O - http://www.moongiant.com/phase/today/ | grep "Moon Age" | sed -e "s/.*\"Moon Age:/Moon Age:/" -e "s/\".*//"'
 
@@ -127,12 +130,13 @@ alias merge="git merge"
 alias pull="git pull"
 alias push="git push"
 alias status="git status"
+alias delete_branch='git branch -d "$1" && git push origin --delete "$1"'
 
 function md { showdown makehtml -i $1 -o ${1%%.md}.html --tables --simplifiedAutoLink; }
 
-function timer { (sleep $((60 * $*)); echo -ne \\a) & }
-function minutes { (sleep $((60 * $*)); echo -ne \\a) & }
-function seconds { (sleep $*; echo -ne \\a) & }
+function timer { (sleep $((60 * $*)); echo -ne \\a\\a\\a\\a) & }
+function minutes { (sleep $((60 * $*)); echo -ne \\a\\a\\a\\a) & }
+function seconds { (sleep $*; echo -ne \\a\\a\\a\\a) & }
 function docxgrep () {
     for i in "${@:2}"
     do
@@ -146,6 +150,7 @@ function docxgrep () {
 export EDITOR=vi
 export PYTHONSTARTUP=~/.pythonrc
 
+alias sc='/Users/stevebeaty//src/schemacrawler-16.10.1-distribution/_schemacrawler/schemacrawler.sh --command=schema --database=$* --info-level=standard --server=sqlite --output-format=png --output-file=schema.png'
 alias rss="ps aux | sort -n -k 4"
 alias gmt="zdump gmt"
 alias phil='zdump Asia/Manila'
@@ -157,8 +162,12 @@ alias gv='ghostview -magstep -4'
 alias h='history'
 alias j='jobs'
 alias jpginfo='djpeg -fast -gif $* | giftopnm -verbose > /dev/null'
-alias m='more'
+alias m='more -R'
+alias more='more -R'
 alias mv='mv -i'
 alias now='date "+%Y%m%d%H%M%S"'
 alias t='tail'
 alias today='date "+%Y-%m-%d"'
+
+# added by travis gem
+[ -f /Users/beatys/.travis/travis.sh ] && source /Users/beatys/.travis/travis.sh

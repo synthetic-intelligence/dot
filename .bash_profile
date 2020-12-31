@@ -1,13 +1,17 @@
-if [ -z "$PS1" ]; then return; fi
-if [ "$BASH_PROFILE" == "YES" ]; then return; fi
+if [[ -z "$PS1" ]]; then return; fi
+if [[ "$BASH_PROFILE" == "YES" ]]; then return; fi
 BASH_PROFILE=YES
 
-if [ -e ~/.bashrc ]; then . ~/.bashrc; fi
-if [ -e ~/bin/bash-powerline.sh ]; then . ~/bin/bash-powerline.sh; fi
+if [[ -e ~/.bashrc ]]; then . ~/.bashrc; fi
 
-if [ -x "$(command -v brew)" ]
+if [[ "${ZSH_VERSION}" == "" ]]
 then
-    if [ -f $(brew --prefix)/etc/bash_completion ]
+    export PS1='\u@\h->\W\$ '
+    if [[ -e ~/bin/bash-powerline.sh ]]
+    then
+        . ~/bin/bash-powerline.sh
+    fi
+    if [[ -x "$(command -v brew)" && -f $(brew --prefix)/etc/bash_completion ]]
     then
         . $(brew --prefix)/etc/bash_completion
     fi
@@ -17,13 +21,12 @@ umask 077
 
 export FIGNORE=".DS_Store"
 export GLOBIGNORE=".DS_Store"
-export PS1='\u@\h->\W\$ '
 export EDITOR=vi
+export TK_SILENCE_DEPRECATION=1
 
-export ARCH=`uname -p`
+export ARCH=`/usr/bin/uname -p`
 
-possible="$PATH \
-    $HOME/bin \
+possible="$HOME/bin \
     $HOME/.rbenv/shims \
     /usr/local/bin \
     /usr/local/sbin \
@@ -49,12 +52,12 @@ do
     # of the operator is considered a pattern
 
     # is this a new path?
-    if [ "${PATH%%:$i*}" == "$PATH" ]
+    if [[ "${PATH%%:$i*}" == "$PATH" ]]
     then
-        if [ -d $i ]
+        if [[ -d $i ]]
         then
              echo "adding $i"
-            if [ "$PATH" != "" ]
+            if [[ "$PATH" != "" ]]
             then
                 PATH=$PATH:$i
             else
@@ -66,9 +69,9 @@ do
     # remove the last directory and add "man"
     manpath=${i%/*}/man
 
-    if [ "${MANPATH%%$manpath*}" == "$MANPATH" ]
+    if [[ "${MANPATH%%$manpath*}" == "$MANPATH" ]]
     then
-        if [ -d $manpath ]
+        if [[ -d $manpath ]]
         then
             MANPATH=$MANPATH:$manpath
         fi
@@ -78,16 +81,16 @@ done
 
 for i in $extraman
 do
-    if [ "${MANPATH%%$i*}" == "$MANPATH" ]
+    if [[ "${MANPATH%%$i*}" == "$MANPATH" ]]
     then
-        if [ -d $i ]
+        if [[ -d $i ]]
         then
             MANPATH=$MANPATH:$i
         fi
     fi
 done
 
-if [ -x "$(command -v rbenv)" ]
+if [[ -x "$(command -v rbenv)" ]]
 then
     eval "$(rbenv init -)"
 fi
