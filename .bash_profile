@@ -4,21 +4,9 @@ BASH_PROFILE=YES
 
 if [[ -e ~/.bashrc ]]; then . ~/.bashrc; fi
 
-if [[ "${ZSH_VERSION}" == "" ]]
-then
-    export PS1='\u@\h->\W\$ '
-    if [[ -e ~/bin/bash-powerline.sh ]]
-    then
-        . ~/bin/bash-powerline.sh
-    fi
-    if [[ -x "$(command -v brew)" && -f $(brew --prefix)/etc/bash_completion ]]
-    then
-        . $(brew --prefix)/etc/bash_completion
-    fi
-fi
-
 umask 077
 
+export PS1='\u@\h->\W\$ '
 export FIGNORE=".DS_Store"
 export GLOBIGNORE=".DS_Store"
 export EDITOR=vi
@@ -94,3 +82,8 @@ if [[ -x "$(command -v rbenv)" ]]
 then
     eval "$(rbenv init -)"
 fi
+
+# Setting PATH for Python 3.9
+# The original version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:${PATH}"
+export PATH

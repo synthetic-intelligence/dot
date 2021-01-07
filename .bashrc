@@ -2,8 +2,8 @@
 if [[ "$BASH_VERSION" != "" && "$BASHRC" == "YES" ]]; then return; fi
 export BASHRC=YES
 
+if [[ -e ~/bin/bash-powerline.sh ]]; then . ~/bin/bash-powerline.sh; fi
 if [[ "${ZSH_VERSION}" != "" && -r /etc/bash_completion ]]; then . /etc/bash_completion; fi
-
 if [[ -r ~/.bashrc_private ]]; then . ~/.bashrc_private; fi
 
 if [[ `uname` == Darwin ]]; then
