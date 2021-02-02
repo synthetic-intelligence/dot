@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+IFS=$'\n\r'
+sigs=($(cat ~/.signatures))
+length=$((${#sigs[@]}-1))
+divisor=$((32767 / ${length}))
+subscript=$(($RANDOM / ${divisor}))
+copyq copy "--\n\
+Dr. Steve Beaty, Professor, Chair, MSU Denver Computer Sciences\n\
+${sigs[${subscript}]}" > /dev/null
