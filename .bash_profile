@@ -1,6 +1,7 @@
 if [[ -z "$PS1" ]]; then return; fi
 if [[ "$BASH_PROFILE" == "YES" ]]; then return; fi
 BASH_PROFILE=YES
+echo "Starting in $0"
 
 if [[ -e ~/.bashrc ]]; then . ~/.bashrc; fi
 
@@ -87,3 +88,4 @@ fi
 # The original version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:${PATH}"
 export PATH
+echo "Done with $0"

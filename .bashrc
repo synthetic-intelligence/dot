@@ -1,6 +1,7 @@
 # aliases and functions
 if [[ "$BASH_VERSION" != "" && "$BASHRC" == "YES" ]]; then exit; fi
 export BASHRC=YES
+echo "Starting in $0"
 
 if [[ -e ~/bin/bash-powerline.sh ]]; then . ~/bin/bash-powerline.sh; fi
 if [[ "${ZSH_VERSION}" != "" && -r /etc/bash_completion ]]; then . /etc/bash_completion; fi
@@ -156,3 +157,4 @@ alias today='date "+%Y-%m-%d"'
 
 # added by travis gem
 [ -f /Users/beatys/.travis/travis.sh ] && source /Users/beatys/.travis/travis.sh
+echo "Done with $0"
