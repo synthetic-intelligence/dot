@@ -1,5 +1,5 @@
 # aliases and functions
-if [[ "$BASH_VERSION" != "" && "$BASHRC" == "YES" ]]; then return; fi
+if [[ "$BASH_VERSION" != "" && "$BASHRC" == "YES" ]]; then exit; fi
 export BASHRC=YES
 
 if [[ -e ~/bin/bash-powerline.sh ]]; then . ~/bin/bash-powerline.sh; fi
@@ -147,8 +147,8 @@ alias gv='ghostview -magstep -4'
 alias h='history'
 alias j='jobs'
 alias jpginfo='djpeg -fast -gif $* | giftopnm -verbose > /dev/null'
-alias m='more -R'
-alias more='more -R'
+alias m='less -R'
+alias more='less -R'
 alias mv='mv -i'
 alias now='date "+%Y%m%d%H%M%S"'
 alias t='tail'
