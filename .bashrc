@@ -17,21 +17,6 @@ elif [[ `uname` == Linux ]]; then
     }
     alias o='xdg-open $*'
     OS=`head -1 /etc/issue | cut -d " " -f 1`
-    if [[ $OS == Ubuntu ]]; then
-        alias list='dpkg --list'
-        alias update='sudo apt-get update'
-        alias pfind="apt-cache showpkg"
-        alias pinstall="sudo apt-get install"
-    elif [[ $OS == CentOS ]]; then
-        alias update='sudo yum update'
-        alias pfind="yum info"
-        alias pinstall="sudo yum install"
-        alias plist="rpm -qlp"
-        alias pinfo="rpm -qip"
-        alias punpack="(rpm2cpio | cpio -i --make-directories) <"
-        alias pinstalled="rpm -qai"
-        alias perase="rpm -e"
-    fi
 fi
 
 alias shrug='echo ¯\_(ツ)_/¯'
