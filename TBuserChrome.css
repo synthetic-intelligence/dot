@@ -1,0 +1,6 @@
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+/* Global UI font */
+* { font-size: 11pt !important; } 
+
+toolbar { height: 100px; }
