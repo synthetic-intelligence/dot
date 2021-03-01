@@ -1,22 +1,40 @@
 #! /bin/bash
 
-cd ~
-FILES='.vimrc .bash_profile .bashrc .signatures .screenrc bin/randomsignature bin/choice bin/bash-powerline.sh bin/rs'
-mkdir bin 2> /dev/null
-rm -f $FILES 2> /dev/null
+FILES=".vimrc .bash_profile .bashrc .signatures .screenrc \
+    bin/randomsignature bin/choice bin/bash-powerline.sh bin/rs"
 
-for i in $FILES
+mkdir ~/bin 2> /dev/null
+
+for FILE in ${FILES}
 do
-    echo $i
-    ln ~/src/dotfiles/$i $i
+    rm -f ~/"${FILE}" 2> /dev/null
+    # echo "${FILE}"
+    ln ~/src/dotfiles/"${FILE}" ~/"${FILE}"
 done
 
-mkdir ${release}/chrome 2> /dev/null
-release=$(/bin/ls -d ~/.mozilla/firefox/*.default-release)
-rm  ${release}/chrome/userChrome.css 2> /dev/null
-ln ~/src/dotfiles/userChrome.css ${release}/chrome/userChrome.css
+SAVEIFS="${IFS}"
+IFS=$'\n'
+for i in $(/bin/ls -d ~/.mozilla/firefox/*.default* ~/Library/Application\ Support/Firefox/Profiles/*.default* 2> /dev/null)
+do
+    DIR="${i}"/chrome
+    # echo "DIR: ${DIR}"
+    mkdir "${DIR}" 2> /dev/null
 
-mkdir ${release}/chrome 2> /dev/null
-release=$(/bin/ls -d ~/.mozilla/firefox/*.default)
-rm  ${release}/chrome/userChrome.css 2> /dev/null
-ln ~/src/dotfiles/userChrome.css ${release}/chrome/userChrome.css
+    FILE="${DIR}"/userChrome.css
+    # echo "FILE: ${FILE}"
+    rm "${FILE}" 2> /dev/null
+    ln ~/src/dotfiles/FFuserChrome.css "${FILE}"
+done
+
+for i in $(/bin/ls -d ~/.thunderbird/*.default* ~/Library/Thunderbird/Profiles/*.default* 2> /dev/null)
+do
+    DIR="${i}"/chrome
+    # echo "DIR: ${DIR}"
+    mkdir "${DIR}" 2> /dev/null
+
+    FILE="${DIR}"/userChrome.css
+    # echo "FILE: ${FILE}"
+    rm "${FILE}" 2> /dev/null
+    ln ~/src/dotfiles/TBuserChrome.css "${FILE}"
+done
+IFS="${SAVEIFS}"
