@@ -36,5 +36,10 @@ do
     # echo "FILE: ${FILE}"
     rm "${FILE}" 2> /dev/null
     ln ~/src/dotfiles/TBuserChrome.css "${FILE}"
+
+    if ! grep 'toolkit.legacyUserProfileCustomizations.stylesheets' ${i}/prefs.js > /dev/null
+    then
+        echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> ${i}/prefs.js
+    fi
 done
 IFS="${SAVEIFS}"
