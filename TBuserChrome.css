@@ -3,4 +3,5 @@
 /* Global UI font */
 * { font-size: 11pt !important; } 
 
-toolbar { height: 75px; }
+/* toolkit.legacyUserProfileCustomizations.stylesheets */
+toolbar { height: 75px }

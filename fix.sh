@@ -40,5 +40,10 @@ do
     FILE="${i}"/webaccountMail/outlook.office365.com/msgFilterRules.dat
     rm "${FILE}" 2> /dev/null
     ln ~/src/dotfiles/mesFilterRules.dat "${FILE}"
+
+    if ! grep 'toolkit.legacyUserProfileCustomizations.stylesheets' ${i}/prefs.js > /dev/null
+    then
+        echo 'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> ${i}/prefs.js
+    fi
 done
 IFS="${SAVEIFS}"
