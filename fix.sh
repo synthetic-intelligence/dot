@@ -36,5 +36,9 @@ do
     # echo "FILE: ${FILE}"
     rm "${FILE}" 2> /dev/null
     ln ~/src/dotfiles/TBuserChrome.css "${FILE}"
+
+    FILE="${i}"/webaccountMail/outlook.office365.com/msgFilterRules.dat
+    rm "${FILE}" 2> /dev/null
+    ln ~/src/dotfiles/mesFilterRules.dat "${FILE}"
 done
 IFS="${SAVEIFS}"
