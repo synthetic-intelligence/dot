@@ -39,7 +39,7 @@ do
 
     FILE="${i}"/webaccountMail/outlook.office365.com/msgFilterRules.dat
     rm "${FILE}" 2> /dev/null
-    ln ~/src/dotfiles/mesFilterRules.dat "${FILE}"
+    ln ~/src/dotfiles/msgFilterRules.dat "${FILE}"
 
     if ! grep 'toolkit.legacyUserProfileCustomizations.stylesheets' ${i}/prefs.js > /dev/null
     then
