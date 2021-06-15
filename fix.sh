@@ -29,15 +29,16 @@ done
 for i in $(/bin/ls -d ~/.thunderbird/*.default* ~/Library/Thunderbird/Profiles/*.default* 2> /dev/null)
 do
     DIR="${i}"/chrome
-    # echo "DIR: ${DIR}"
-    mkdir "${DIR}" 2> /dev/null
+    mkdir -p "${DIR}" 2> /dev/null
 
     FILE="${DIR}"/userChrome.css
-    # echo "FILE: ${FILE}"
     rm "${FILE}" 2> /dev/null
     ln ~/src/dotfiles/TBuserChrome.css "${FILE}"
 
-    FILE="${i}"/webaccountMail/outlook.office365.com/msgFilterRules.dat
+    DIR="${i}"/webaccountMail/outlook.office365.com
+    mkdir -p ${DIR} 2> /dev/null
+
+    FILE="${DIR}"/msgFilterRules.dat
     rm "${FILE}" 2> /dev/null
     ln ~/src/dotfiles/msgFilterRules.dat "${FILE}"
 
