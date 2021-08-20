@@ -3,8 +3,11 @@
 IFS=$'\n\r'
 sigs=($(cat ~/.signatures))
 length=$((${#sigs[@]}-1))
+echo $length >> /tmp/debug
 divisor=$((32767 / ${length}))
+echo $divisor >> /tmp/debug
 subscript=$(($RANDOM / ${divisor}))
+echo $subscript >> /tmp/debug
 copyq copy "--\n\
 Dr. Steve Beaty, Professor, Chair, MSU Denver Computer Sciences\n\
 ${sigs[${subscript}]}" > /dev/null

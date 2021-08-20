@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #!/usr/bin/env -S bash -e
 
 filename=".choices"
@@ -17,7 +18,7 @@ then
     prefix=.
     while true
     do
-        absolute=$(cd $prefix; pwd)
+        absolute=$(cd $prefix || exit; pwd)
 
         if [[ -r "$absolute/$filename" ]]
         then
@@ -40,17 +41,17 @@ if [[ "$1" != "" ]]
 then
     a=$1
     shift
-    echo `sed -ne "$a,$a p" "$filename"` "$*"
-    eval `sed -ne "$a,$a p" "$filename"` "$*"
+    echo "$(sed -ne "$a,$a p" "$filename")" "$*"
+    eval "$(sed -ne "$a,$a p" "$filename")" "$*"
     exit
 fi
 
 IFS=$'\n'
 
 # otherwise, give them a choice and remember it in their history.
-select CHOICE in `cat $filename`
+select CHOICE in $(cat "$filename")
 do
     history -s "$CHOICE"
-    eval $CHOICE $*
+    eval "$CHOICE" "$*"
     break
 done

@@ -20,7 +20,7 @@ elif [[ `uname` == Linux ]]; then
     OS=`head -1 /etc/issue | cut -d " " -f 1`
 fi
 
-alias shrug='echo ¯\_(ツ)_/¯'
+alias shrug='echo ¯\\\_\(ツ\)_/¯'
 alias listening='netstat -anp tcp | grep "LISTEN"'
 alias ls='lshelper'
 alias la='lshelper -a'
