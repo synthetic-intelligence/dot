@@ -1,5 +1,6 @@
 syn on
 set modeline
+set modelines=4
 set	background=dark
 set	ru nocp sc wmnu bg=light
 set	ai autowrite ignorecase nowarn nowrapscan
