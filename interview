@@ -1,41 +1,41 @@
-Can you explain at a very high level what the differences are between C++, Python and Java in terms with how they run on the hardware?
-What is the difference of pass by value and pass by reference?
-What advantages and disadvantages to using the Object Oriented methodology for software development?
-Have you done any multi-threaded programming? What is a race condition? How do you avoid it?  
-Do you know the difference is between a mutex and semaphore.
-Are you familiar with the concept of a dead lock?
-Focusing on specifically C++, do you know what the difference is between the delete expression and the free function?
-Are you familiar with C++ templates? Can you tell me what they’re used for and why I might want to use them as a design choice?
-Are you familiar with recursive and iterative algorithms?
-On your resume, you mentioned your familiar with CI/CD pipelines, what have you done with them in your experience?
-What did you use to manage software versioning?
-When using Git how did you guys know when a change did not break the system when you do a merge request?
-Did you use any interface like Git Kraken or Github desktop?
-Unit testing, what framework did you say you used?
-Your resume that you are familiar with Agile, is that just from an educational experience?
-Can you walk me through the process of getting an application to run in Docker?
-When you created your Kubernetes cluster on your raspberry pi’s, did you use any specific version of Kubernetes?
-Did you set up any load balancer or do all the clients have to go through specific node ports?
-Do you prefer working on infrastructure or application development like back end or front end or both?
-Would you say that most of the applications that you have written have been web based?
-What Would you say that some of the biggest challenges you have faced and what have you done to overcome them?
-Are you using Helm?
-How would say when you pick and choose to fight a problem on your own and trying to do your own research vs. going and getting help from a colleague?
-Have you ever had a situation where you are the subject matter expert?  What would you do in that situation when you get stuck on something?
-What IDE are you comfortable using?  If we decide to bring you in, how would you feel about working in a role that doesn’t use an IDE?  How would you go about doing it?
-Why should we select you over other college grads?
-What Linux distros are you familiar with?
-So you made a career switch, why did you choose computer science?
-What’s the difference between a tuple, a list and a dictionary in python?
-On a scale of 1 – 10 what is your level of comfort with C++, Python and Java.
-Are you familiar with design patterns? What are some patterns that you’ve worked with?  Are you familiar with any other design patterns beyond singletons.
-What is the difference between unit testing and system testing?
-Did you spend any time learning object oriented design and analysis?  What is polymorphism and give me example of why I want to use it?
-What’s encapsulation?
-What are the four aspects of OO programming?
-What is aspect-oriented programming?
-Describe how a database is structured.
-What is an ERD?
-What are advantages and disadvantages of "no-SQL" databases?
-Describe an algorithm that finds the middle element of a singly-linked list in one pass.
-What is an ORM?
+Interview question: Can you explain at a very high level what the differences are between C++, Python and Java in terms with how they run on the hardware?
+Interview question: What is the difference of pass by value and pass by reference?
+Interview question: What advantages and disadvantages to using the Object Oriented methodology for software development?
+Interview question: Have you done any multi-threaded programming? What is a race condition? How do you avoid it?  
+Interview question: Do you know the difference is between a mutex and semaphore.
+Interview question: Are you familiar with the concept of a dead lock?
+Interview question: Focusing on specifically C++, do you know what the difference is between the delete expression and the free function?
+Interview question: Are you familiar with C++ templates? Can you tell me what they’re used for and why I might want to use them as a design choice?
+Interview question: Are you familiar with recursive and iterative algorithms?
+Interview question: On your resume, you mentioned your familiar with CI/CD pipelines, what have you done with them in your experience?
+Interview question: What did you use to manage software versioning?
+Interview question: When using Git how did you guys know when a change did not break the system when you do a merge request?
+Interview question: Did you use any interface like Git Kraken or Github desktop?
+Interview question: Unit testing, what framework did you say you used?
+Interview question: Your resume that you are familiar with Agile, is that just from an educational experience?
+Interview question: Can you walk me through the process of getting an application to run in Docker?
+Interview question: When you created your Kubernetes cluster on your raspberry pi’s, did you use any specific version of Kubernetes?
+Interview question: Did you set up any load balancer or do all the clients have to go through specific node ports?
+Interview question: Do you prefer working on infrastructure or application development like back end or front end or both?
+Interview question: Would you say that most of the applications that you have written have been web based?
+Interview question: What Would you say that some of the biggest challenges you have faced and what have you done to overcome them?
+Interview question: Are you using Helm?
+Interview question: How would say when you pick and choose to fight a problem on your own and trying to do your own research vs. going and getting help from a colleague?
+Interview question: Have you ever had a situation where you are the subject matter expert?  What would you do in that situation when you get stuck on something?
+Interview question: What IDE are you comfortable using?  If we decide to bring you in, how would you feel about working in a role that doesn’t use an IDE?  How would you go about doing it?
+Interview question: Why should we select you over other college grads?
+Interview question: What Linux distros are you familiar with?
+Interview question: So you made a career switch, why did you choose computer science?
+Interview question: What’s the difference between a tuple, a list and a dictionary in python?
+Interview question: On a scale of 1 – 10 what is your level of comfort with C++, Python and Java.
+Interview question: Are you familiar with design patterns? What are some patterns that you’ve worked with?  Are you familiar with any other design patterns beyond singletons.
+Interview question: What is the difference between unit testing and system testing?
+Interview question: Did you spend any time learning object oriented design and analysis?  What is polymorphism and give me example of why I want to use it?
+Interview question: What’s encapsulation?
+Interview question: What are the four aspects of OO programming?
+Interview question: What is aspect-oriented programming?
+Interview question: Describe how a database is structured.
+Interview question: What is an ERD?
+Interview question: What are advantages and disadvantages of "no-SQL" databases?
+Interview question: Describe an algorithm that finds the middle element of a singly-linked list in one pass.
+Interview question: What is an ORM?
