@@ -1,7 +1,8 @@
 #! /bin/bash
 
 FILES=".vimrc .bash_profile .bashrc .signatures .screenrc \
-    bin/randomsignature bin/choice bin/bash-powerline.sh bin/rs"
+    bin/randomsignature bin/choice bin/bash-powerline.sh bin/rs \
+    bin/runrails"
 
 mkdir ~/bin 2> /dev/null
 
