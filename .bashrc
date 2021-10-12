@@ -30,6 +30,7 @@ alias lr='lshelper -R'
 alias llr='lshelper -lR'
 alias lt='lshelper -t'
 alias llt='lshelper -lt'
+alias git-color='git -c color.ui=always'
 
 function tolower () { echo "$*" | tr '[:upper:]' '[:lower:]'; }
 function toupper () { echo "$*" | tr '[:lower:]' '[:upper:]'; }
@@ -148,8 +149,8 @@ alias gv='ghostview -magstep -4'
 alias h='history'
 alias j='jobs'
 alias jpginfo='djpeg -fast -gif $* | giftopnm -verbose > /dev/null'
-alias m='less -R'
-alias more='less -R'
+alias m='less -ReF'
+alias more='less -ReF'
 alias mv='mv -i'
 alias now='date "+%Y%m%d%H%M%S"'
 alias t='tail'

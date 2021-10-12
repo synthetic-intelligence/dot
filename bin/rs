@@ -1,3 +1,4 @@
 #! /usr/bin/env bash
+# recursive subsitute
 
 find . -type f -not -path '*/\.git*' -print0 | xargs -0 -n 1 sed -i '' -e "s/$1/$2/g"
