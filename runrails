@@ -1,0 +1,35 @@
+#! /usr/bin/env bash -ex
+
+bundle install
+yarn install --check-files
+# rails webpacker:install
+# rails webpacker:compile
+
+if [[ ! -e db/development.sqlite3 ]]
+then
+    echo "migrating development"
+    rails db:migrate
+
+    lines=`wc -l db/seeds.rb`
+    if [[ $lines > 7 ]]
+    then
+        echo "seeding locally"
+        rails db:seed
+    elif [[ -e ~/seeds.rb ]]
+    then
+        echo "seeding from ~/seeds.rb"
+        cp -f ~/seeds.rb db
+        rails db:seed
+    fi
+else
+    echo "using db/development.sqlite3"
+fi
+
+if [[ ! -e db/test.sqlite3 ]]
+then
+    echo "migrating test"
+    rails db:migrate RAILS_ENV=test
+fi
+
+rails test
+rails server
