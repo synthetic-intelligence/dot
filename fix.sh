@@ -1,6 +1,6 @@
 #! /bin/bash
 
-FILES=".vimrc .bash_profile .bashrc .signatures .screenrc bin/*"
+FILES=".vimrc .prsst.yml .bash_profile .bashrc .signatures .screenrc bin/*"
 
 mkdir ~/bin 2> /dev/null
 
