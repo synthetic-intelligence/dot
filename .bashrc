@@ -156,6 +156,13 @@ alias now='date "+%Y%m%d%H%M%S"'
 alias t='tail'
 alias today='date "+%Y-%m-%d"'
 
+alias killspring='ps ax | grep spring | colrm 8 | xargs kill'
+
+if [[ -x "$(command -v rbenv)" ]]
+then
+    eval "$(rbenv init -)"
+fi
+
 # added by travis gem
 [ -f /Users/beatys/.travis/travis.sh ] && source /Users/beatys/.travis/travis.sh
 echo "Done with .bashrc"
