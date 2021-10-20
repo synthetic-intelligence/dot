@@ -1,6 +1,3 @@
-A primary cause of complexity is that software vendors uncritically adopt almost any feature that users want. - Niklaus Wirth
-Be curious. Read widely. Try new things. I think a lot of what people call intelligence boils down to curiosity. - Aaron Swartz
-Code is like humor. When you have to explain it, it’s bad. – Cory House
 Consumer electronics are just plastic boxes with an abandoned Linux distribution inside. - SwiftOnSecurity
 Controlling complexity is the essence of computer programming. - Brian Kernighan
 Debugging is like being the detective in a crime movie where you are also the murderer. - Filipe Fortes
@@ -79,3 +76,6 @@ A language that doesn't affect the way you think about programming is not worth 
 Always implement things when you actually need them, never when you just foresee that you need them. - Ron Jeffries
 Any code of your own that you haven't looked at for six or more months might as well have been written by someone else. - Eagleson's law
 Any fool can write code that a computer can understand. Good programmers write code that humans can understand. - Martin Fowler
+A primary cause of complexity is that software vendors uncritically adopt almost any feature that users want. - Niklaus Wirth
+Be curious. Read widely. Try new things. I think a lot of what people call intelligence boils down to curiosity. - Aaron Swartz
+Code is like humor. When you have to explain it, it’s bad. – Cory House

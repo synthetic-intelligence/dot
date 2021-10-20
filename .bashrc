@@ -1,4 +1,7 @@
 # aliases and functions
+# if non-interactive, don't write any output
+if [ -z "$PS1" ]; then return fi
+
 if [[ "$BASH_VERSION" != "" && "$BASHRC" == "YES" ]]; then exit; fi
 export BASHRC=YES
 echo "Starting in .bashrc"
@@ -166,3 +169,7 @@ fi
 # added by travis gem
 [ -f /Users/beatys/.travis/travis.sh ] && source /Users/beatys/.travis/travis.sh
 echo "Done with .bashrc"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
