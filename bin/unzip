@@ -1,0 +1,4 @@
+#! /usr/bin/env bash -x
+
+mkdir "${1%%.zip}"
+/usr/bin/unzip -d "${1%%.zip}" "$1"
