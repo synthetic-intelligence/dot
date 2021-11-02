@@ -1,5 +1,5 @@
 @namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
 
-/* toolkit.legacyUserProfileCustomizations.stylesheets */
+/* about:config toolkit.legacyUserProfileCustomizations.stylesheets = true */
 
-#navigator-toolbox { margin-bottom: 75px; }
+#navigator-toolbox::after { height: 75px !important; }
