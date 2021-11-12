@@ -13,7 +13,7 @@ done
 
 SAVEIFS="${IFS}"
 IFS=$'\n'
-for i in $(/bin/ls -d ~/.mozilla/firefox/*.default* ~/Library/Application\ Support/Firefox/Profiles/*.default* 2> /dev/null)
+for i in $(/bin/ls -d ~/.mozilla/firefox/*.default ~/Library/Application\ Support/Firefox/Profiles/*.default 2> /dev/null)
 do
     DIR="${i}"/chrome
     # echo "DIR: ${DIR}"
@@ -25,7 +25,7 @@ do
     ln ~/src/dotfiles/FFuserChrome.css "${FILE}"
 done
 
-for i in $(/bin/ls -d ~/.thunderbird/*.default* ~/Library/Thunderbird/Profiles/*.default* 2> /dev/null)
+for i in $(/bin/ls -d ~/.thunderbird/*.default ~/Library/Thunderbird/Profiles/*.default 2> /dev/null)
 do
     DIR="${i}"/chrome
     mkdir -p "${DIR}" 2> /dev/null
