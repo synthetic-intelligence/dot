@@ -13,7 +13,13 @@ done
 
 SAVEIFS="${IFS}"
 IFS=$'\n'
-for i in $(/bin/ls -d ~/.mozilla/firefox/*.default ~/Library/Application\ Support/Firefox/Profiles/*.default 2> /dev/null)
+# sigh, see: https://superuser.com/questions/1507251/firefox-has-two-default-profiles-default-release-and-default-which-one-sho
+FF="~/.mozilla/firefox/*.default-release \
+    ~/.mozilla/firefox/*.default \
+    ~/Library/Application\ Support/Firefox/Profiles/*.default-release \
+    ~/Library/Application\ Support/Firefox/Profiles/*.default"
+
+for i in $(/bin/ls -d ${FF} 2> /dev/null)
 do
     DIR="${i}"/chrome
     # echo "DIR: ${DIR}"
@@ -25,7 +31,12 @@ do
     ln ~/src/dotfiles/FFuserChrome.css "${FILE}"
 done
 
-for i in $(/bin/ls -d ~/.thunderbird/*.default ~/Library/Thunderbird/Profiles/*.default 2> /dev/null)
+TB="~/.thunderbird/*.default \
+    ~/.thunderbird/*.default.release \
+    ~/Library/Thunderbird/Profiles/*.default \
+    ~/Library/Thunderbird/Profiles/*.default.release"
+
+for i in $(/bin/ls -d ${TB} 2> /dev/null)
 do
     DIR="${i}"/chrome
     mkdir -p "${DIR}" 2> /dev/null
