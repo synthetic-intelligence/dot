@@ -162,6 +162,8 @@ alias now='date "+%Y%m%d%H%M%S"'
 alias t='tail'
 alias today='date "+%Y-%m-%d"'
 
+alias ramdisk='mkdir /tmp/ramdisk && chmod 777 /tmp/ramdisk && sudo mount -t tmpfs -o size=1G myramdisk /tmp/ramdisk'
+
 alias killspring='ps ax | grep spring | colrm 8 | xargs kill'
 
 if [[ -x "$(command -v rbenv)" ]]
