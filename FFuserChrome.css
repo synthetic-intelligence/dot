@@ -2,6 +2,4 @@
 
 /* about:config toolkit.legacyUserProfileCustomizations.stylesheets = true */
 
-nav-bar { border: 4px dashed red !important; }
-
-#navigator-toolbox::after { height: 75px !important; }
+#navigator-toolbox { height: 150px !important; }
