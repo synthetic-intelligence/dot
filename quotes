@@ -1,7 +1,3 @@
-Inside every large program is a small program trying to get out. - Tony Hoare
-In theory, there is no difference between theory and practice. But, in practice, there is. - Jan L. A. van de Snepscheut
-I still like Java, though my ardor has cooled a bit as the platform has grown. - Joshua Bloch
-It is easier to port a shell than a shell script. - Larry Wall
 It's not what happens to you, but how you react to it that matters. - Epictetus
 Just because people tell you it can't be done, that doesn't necessarily mean that it can't be done. It just means that they can't do it. - Anders Hejlsberg
 Keep silence for the most part, and speak only when you must, and then briefly. - Epictetus
@@ -79,3 +75,7 @@ If you want to know who controls you, look at who you are not allowed to critici
 If you wish to be a writer, write. - Epictetus
 I had the pleasure of conducting an oral history of John Backus for @ComputerHistory He told me that he came to realize why his work on functional programming failed: FP makes it easy to do certain hard things, but it makes it difficult to do many easy things. -Grady Booch.
 I’m not shy. I’m just very good at figuring out who’s worth talking to. - Bill Murray
+Inside every large program is a small program trying to get out. - Tony Hoare
+In theory, there is no difference between theory and practice. But, in practice, there is. - Jan L. A. van de Snepscheut
+I still like Java, though my ardor has cooled a bit as the platform has grown. - Joshua Bloch
+It is easier to port a shell than a shell script. - Larry Wall
