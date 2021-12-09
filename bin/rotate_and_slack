@@ -1,0 +1,12 @@
+#! /bin/bash
+
+QUOTE=$(head -1 "$4")
+tail +2 "$4" > $$
+echo "$QUOTE" >> $$
+mv $$ "$4"
+
+curl -s -X POST \
+    --silent \
+    -H 'Content-type: application/json' \
+    --data '{"text":"'"$QUOTE"'"}' \
+    https://hooks.slack.com/services/"$1"/"$2"/"$3"
