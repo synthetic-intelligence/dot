@@ -8,6 +8,6 @@ divisor=$((32767 / ${length}))
 echo $divisor >> /tmp/debug
 subscript=$(($RANDOM / ${divisor}))
 echo $subscript >> /tmp/debug
-copyq copy "--\n\
+echo -e "--\n\
 Dr. Steve Beaty, Professor, Chair, MSU Denver Computer Sciences\n\
-${sigs[${subscript}]}" > /dev/null
+${sigs[${subscript}]}" | pbcopy
