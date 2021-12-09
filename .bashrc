@@ -198,6 +198,14 @@ alias now='date "+%Y%m%d%H%M%S"'
 alias t='tail'
 alias today='date "+%Y-%m-%d"'
 
+alias prsst='python3 "${HOME}"/src/PRSST/prsst/main.py &'
+
+alias stealth='sudo ifconfig en0 lladdr 00:11:22:33:44:55'
+alias unstealth='sudo ifconfig en1 lladdr a4:5e:60:e8:b9:05'
+
+alias rrmyseeds="bundle install && yarn install --check-files && rails db:migrate && \cp -f ~/seeds.rb db && rails db:seed && rails server"
+alias rrseedless="bundle install && yarn install --check-files && rails db:migrate && rails db:seed && rails server"
+
 alias ramdisk='mkdir /tmp/ramdisk && chmod 777 /tmp/ramdisk && sudo mount -t tmpfs -o size=1G myramdisk /tmp/ramdisk'
 
 alias killspring='ps ax | grep spring | colrm 8 | xargs kill'
