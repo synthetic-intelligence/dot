@@ -1,6 +1,6 @@
 #! /bin/bash
 
-FILES=".vimrc .prsst.yml .bash_profile .bashrc .signatures .screenrc bin/*"
+FILES=".vimrc .gtkrc-2.0 .prsst.yml .bash_profile .bashrc .signatures .screenrc bin/*"
 
 if [[ $(uname) == Linux ]]
 then
@@ -13,6 +13,9 @@ do
         gsettings set "${A}${uuid}"/ default-size-rows 44
   done
   gsettings set org.gnome.desktop.interface cursor-blink false
+  gsettings set org.cinnamon.desktop.keybindings.wm close "['<Super>q']"
+  gsettings set org.cinnamon.desktop.keybindings.wm minimize "['<Super>m']"
+  gsettings set org.cinnamon.desktop.interface gtk-overlay-scrollbars false
 fi
 
 mkdir ~/bin 2> /dev/null
@@ -24,6 +27,12 @@ do
     ln ~/src/dotfiles/"${FILE}" ~/"${FILE}"
 done
 
+function mozilla_prefs () {
+    if ! grep "${1}" "${2}" > /dev/null
+    then
+        echo 'user_pref("'"${1}"'", "'"${3}"'");' >> "${PREFS}"
+    fi
+}
 
 function userChrome () {
    for DIRS in "$@"
@@ -40,12 +49,14 @@ function userChrome () {
                 rm "${FILE}" 2> /dev/null
                 ln ~/src/dotfiles/FFuserChrome.css "${FILE}"
 
-                STYLE='toolkit.legacyUserProfileCustomizations.stylesheets'
                 PREFS=${POSSIBLE}/prefs.js
-                if ! grep "${STYLE}" "${PREFS}" > /dev/null
-                then
-                    echo 'user_pref("'${STYLE}'", true);' >> "${PREFS}"
-                fi
+                STYLE='toolkit.legacyUserProfileCustomizations.stylesheets'
+                VALUE=true
+                mozilla_prefs "${STYLE}" "${PREFS}" "${VALUE}"
+
+                STYLE='browser.backspace_action'
+                VALUE=2
+                mozilla_prefs "${STYLE}" "${PREFS}" "${VALUE}"
 
                 if [[ "${POSSIBLE}" =~ .*[Tt]hunderbird.* ]]
                 then
@@ -70,3 +81,8 @@ TB=( ~/.thunderbird/*.default ~/.thunderbird/*.default.release ~/Library/Thunder
 
 userChrome "${TB[@]}"
 
+# /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/palette
+# foo="['rgb(7,54,66)', 'rgb(220,50,47)', 'rgb(133,153,0)', 'rgb(181,137,0)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']"
+
+
+# vim: wm=0
