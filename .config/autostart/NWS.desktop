@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=conky -dc ~/src/conky/nws.conf
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=NWS
+Comment[en_US]=No description
+X-GNOME-Autostart-Delay=15
