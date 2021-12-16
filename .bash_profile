@@ -1,8 +1,10 @@
+#! /usr/bin/env bash
 if [[ -z "$PS1" ]]; then return; fi
 if [[ "$BASH_PROFILE" == "YES" ]]; then return; fi
 BASH_PROFILE=YES
 echo "Starting in .bash_profile"
 
+# shellcheck source=/Users/stevebeaty/.bashrc
 if [[ -e ~/.bashrc ]]; then . ~/.bashrc; fi
 
 umask 077
@@ -13,7 +15,8 @@ export GLOBIGNORE=".DS_Store"
 export EDITOR=vi
 export TK_SILENCE_DEPRECATION=1
 
-export ARCH=`/usr/bin/uname -p`
+ARCH=$(/usr/bin/uname -p)
+export ARCH
 
 possible="$HOME/bin \
     $HOME/.rbenv/shims \
@@ -41,7 +44,7 @@ do
     # of the operator is considered a pattern
 
     # is this a new path?
-    if [[ "${PATH%%:$i*}" == "$PATH" ]]
+    if [[ "${PATH%%:"$i"*}" == "$PATH" ]]
     then
         if [[ -d $i ]]
         then
@@ -58,7 +61,7 @@ do
     # remove the last directory and add "man"
     manpath=${i%/*}/man
 
-    if [[ "${MANPATH%%$manpath*}" == "$MANPATH" ]]
+    if [[ "${MANPATH%%"$manpath"*}" == "$MANPATH" ]]
     then
         if [[ -d $manpath ]]
         then
@@ -70,7 +73,7 @@ done
 
 for i in $extraman
 do
-    if [[ "${MANPATH%%$i*}" == "$MANPATH" ]]
+    if [[ "${MANPATH%%"$i"*}" == "$MANPATH" ]]
     then
         if [[ -d $i ]]
         then

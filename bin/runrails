@@ -10,7 +10,7 @@ then
     echo "migrating development"
     rails db:migrate
 
-    lines=`wc -l db/seeds.rb`
+    lines=`wc -l db/seeds.rb | cut -d ' ' -f 1`
     if [[ $lines > 7 ]]
     then
         echo "seeding locally"
