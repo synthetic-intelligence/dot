@@ -206,6 +206,8 @@ alias unstealth='sudo ifconfig en1 lladdr a4:5e:60:e8:b9:05'
 alias rrmyseeds="bundle install && yarn install --check-files && rails db:migrate && \cp -f ~/seeds.rb db && rails db:seed && rails server"
 alias rrseedless="bundle install && yarn install --check-files && rails db:migrate && rails db:seed && rails server"
 
+alias cleanrails="find . -depth -name node_modules -o -name cache -exec rm -rf '{}' ';'"
+
 alias ramdisk='mkdir /tmp/ramdisk && chmod 777 /tmp/ramdisk && sudo mount -t tmpfs -o size=1G myramdisk /tmp/ramdisk'
 
 alias killspring='ps ax | grep spring | colrm 8 | xargs kill'
@@ -224,4 +226,5 @@ export NVM_DIR="$HOME/.nvm"
 # shellcheck source=/Users/stevebeaty/.nvm/bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# vim: wm=0
 echo "Done with .bashrc"

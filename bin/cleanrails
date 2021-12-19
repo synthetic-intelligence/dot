@@ -1,4 +1,0 @@
-#! /usr/bin/env bash
-
-find . -d -name node_modules -exec rm -rf '{}' ';'
-find . -d -name cache -exec rm -rf '{}' ';'

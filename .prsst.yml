@@ -1,3 +1,4 @@
+delay: 10
 feeds:
 - https://www.fedscoop.com/feed
 - https://portswigger.net/daily-swig/rss
@@ -31,4 +32,9 @@ feeds:
 - https://www.penaddict.com/blog?format=rss
 - https://tidbits.com/feeds/tidbits_blurb.rss
 - https://www.reddit.com/r/todayilearned.rss
-font: Helvetica 14 normal roman
+font-family: FreeSans
+font-size: 9
+font-slant: roman
+font-weight: normal
+growright: false
+reload: 120
