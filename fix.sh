@@ -21,6 +21,7 @@ then
         done
     done
     gsettings set org.gnome.desktop.interface cursor-blink false
+    gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 
     WM=org.cinnamon.desktop.keybindings.wm
     a=( close minimize move-to-workspace-right move-to-workspace-left )
