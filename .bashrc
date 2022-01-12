@@ -198,6 +198,10 @@ alias now='date "+%Y%m%d%H%M%S"'
 alias t='tail'
 alias today='date "+%Y-%m-%d"'
 
+function shuf () {
+    sort -R "$@" | head -n 1
+}
+
 alias prsst='python3 "${HOME}"/src/PRSST/prsst/main.py &'
 
 alias stealth='sudo ifconfig en0 lladdr 00:11:22:33:44:55'
@@ -228,4 +232,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # vim: wm=0
+set +x  # -x coming from somewhere i can't find.
 echo "Done with .bashrc"
