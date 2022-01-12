@@ -1,24 +1,3 @@
-More fiction is written in Excel than Word. - Troy Vosseller
-Much of the essence of building a program is in fact the debugging of the specification. - Fred Brooks
-Never confuse education with intelligence. - Bill Murray
-No great thing is created suddenly. - Epictetus
-No matter how slow you are writing clean code, you will always be slower if you make a mess. - Uncle Bob Martin
-Non-word of the day: irregardless.
-No one in the brief history of computing has ever written a piece of perfect software. It's unlikely that you'll be the first. - Andy Hunt
-Object-oriented programming is an exceptionally bad idea which could only have originated in California. - Edsger Dijkstra
-One of the best programming skills you can have is knowing when to walk away for a while. - Oscar Godson
-One person's data is another person's program. - Guy L. Steele, Jr.
-People have an enormous tendency to resist change. They love to say, We've always done it this way. I try to fight that. - Grace Hopper
-Programming isn’t about what you know; it’s about what you can figure out. - Chris Pine
-Programming languages, like pizza, come in only two sizes: too big and too small. - Richard Pattis
-Programs must be written for people to read, and only incidentally for machines to execute. — Harold Abelson
-School doesn’t prepare you for the real world, it prepares you for more school.
-Telling a programmer there's already a library to do X is like telling a songwriter there's already a song about love. - Pete Cordell
-Testing leads to failure, and failure leads to understanding. - Burt Rutan
-The best programs are the ones written when the programmer is supposed to be working on something else. - Melinda Varian
-The best way to get the right answer ... is not to ask a question; it’s to post the wrong answer. - Cunningham’s Law
-The cleaner and nicer the program, the faster it's going to run. And if it doesn't it'll be easy to make it fast. - Joshua Bloch
-The dangerous man is the one who has only one idea, because then he'll fight and die for it. - Francis Crick.
 The difference between a framework and a library is you can test code that uses a library. - Michael Feathers
 The essence of philosophy is that a man should so live that his happiness shall depend as little as possible on external things. - Epictetus
 The first 18 years of your life is not representative of how the rest will go. The sooner you realize this, the better off you’ll be.
@@ -79,3 +58,24 @@ Keep silence for the most part, and speak only when you must, and then briefly. 
 Let me tell you the secret that has led me to my goal. My strength lies solely in my tenacity. - Louis Pasteur
 Life has no remote. Get up and change it yourself. - Bill Murray
 Meaningless word of the day: synergy.
+More fiction is written in Excel than Word. - Troy Vosseller
+Much of the essence of building a program is in fact the debugging of the specification. - Fred Brooks
+Never confuse education with intelligence. - Bill Murray
+No great thing is created suddenly. - Epictetus
+No matter how slow you are writing clean code, you will always be slower if you make a mess. - Uncle Bob Martin
+Non-word of the day: irregardless.
+No one in the brief history of computing has ever written a piece of perfect software. It's unlikely that you'll be the first. - Andy Hunt
+Object-oriented programming is an exceptionally bad idea which could only have originated in California. - Edsger Dijkstra
+One of the best programming skills you can have is knowing when to walk away for a while. - Oscar Godson
+One person's data is another person's program. - Guy L. Steele, Jr.
+People have an enormous tendency to resist change. They love to say, We've always done it this way. I try to fight that. - Grace Hopper
+Programming isn’t about what you know; it’s about what you can figure out. - Chris Pine
+Programming languages, like pizza, come in only two sizes: too big and too small. - Richard Pattis
+Programs must be written for people to read, and only incidentally for machines to execute. — Harold Abelson
+School doesn’t prepare you for the real world, it prepares you for more school.
+Telling a programmer there's already a library to do X is like telling a songwriter there's already a song about love. - Pete Cordell
+Testing leads to failure, and failure leads to understanding. - Burt Rutan
+The best programs are the ones written when the programmer is supposed to be working on something else. - Melinda Varian
+The best way to get the right answer ... is not to ask a question; it’s to post the wrong answer. - Cunningham’s Law
+The cleaner and nicer the program, the faster it's going to run. And if it doesn't it'll be easy to make it fast. - Joshua Bloch
+The dangerous man is the one who has only one idea, because then he'll fight and die for it. - Francis Crick.

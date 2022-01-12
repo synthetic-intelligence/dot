@@ -207,6 +207,7 @@ alias rrmyseeds="bundle install && yarn install --check-files && rails db:migrat
 alias rrseedless="bundle install && yarn install --check-files && rails db:migrate && rails db:seed && rails server"
 
 alias cleanrails="find . -depth -name node_modules -o -name cache -exec rm -rf '{}' ';'"
+alias railspull='git pull git@github.com:msu-denver-cs/${PWD##*/}.git'
 
 alias ramdisk='mkdir /tmp/ramdisk && chmod 777 /tmp/ramdisk && sudo mount -t tmpfs -o size=1G myramdisk /tmp/ramdisk'
 
