@@ -1,7 +1,3 @@
-Interview question: Unit testing, what framework did you say you used?
-Interview question: Your resume that you are familiar with Agile, is that just from an educational experience?
-Interview question: Can you walk me through the process of getting an application to run in Docker?
-Interview question: When you created your Kubernetes cluster on your raspberry pi’s, did you use any specific version of Kubernetes?
 Interview question: Did you set up any load balancer or do all the clients have to go through specific node ports?
 Interview question: Do you prefer working on infrastructure or application development like back end or front end or both?
 Interview question: Would you say that most of the applications that you have written have been web based?
@@ -39,3 +35,7 @@ Interview question: On your resume, you mentioned your familiar with CI/CD pipel
 Interview question: What did you use to manage software versioning?
 Interview question: When using Git how did you guys know when a change did not break the system when you do a merge request?
 Interview question: Did you use any interface like Git Kraken or Github desktop?
+Interview question: Unit testing, what framework did you say you used?
+Interview question: Your resume that you are familiar with Agile, is that just from an educational experience?
+Interview question: Can you walk me through the process of getting an application to run in Docker?
+Interview question: When you created your Kubernetes cluster on your raspberry pi’s, did you use any specific version of Kubernetes?

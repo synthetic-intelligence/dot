@@ -1,11 +1,7 @@
 #! /usr/bin/env bash
 # aliases and functions
 # if non-interactive, don't write any output
-if [ -z "$PS1" ]
-then
-    return
-fi
-
+if [[ -z "$PS1" ]]; then return; fi
 if [[ "$BASH_VERSION" != "" && "$BASHRC" == "YES" ]]; then exit; fi
 export BASHRC=YES
 echo "Starting in .bashrc"
@@ -87,8 +83,7 @@ alias green="find . -name '*.gif' -exec dirname '{}' ';' | uniq | xargs ~/bin/fi
 
 function best() { agrep -B "$@" /usr/share/dict/words; }
 
-function unzipper ()
-{
+function unzipper () {
     for i in "$@"
     do
         unzip "$i"
@@ -103,13 +98,11 @@ alias be='bundle exec'
 alias beep='echo -n ""'
 alias utime='date -r'
 
-alias mcd='cd ../../../../../../..'
-
 alias rmthumbs="find -E . -regex '.*\.(jpg|gif|png)' -a -size -7k -exec rm '{}' ';'"
 
 alias unquarantine='xattr -dr com.apple.quarantine'
 
-function cd () { builtin cd "$*" || exit; lshelper; }
+function cd () { builtin cd "$*" && lshelper; }
 function pd () {
     if [[ $# == 0 ]]
     then
@@ -232,5 +225,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # vim: wm=0
-set +x  # -x coming from somewhere i can't find.
 echo "Done with .bashrc"

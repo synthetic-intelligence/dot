@@ -1,7 +1,3 @@
-The difference between a framework and a library is you can test code that uses a library. - Michael Feathers
-The essence of philosophy is that a man should so live that his happiness shall depend as little as possible on external things. - Epictetus
-The first 18 years of your life is not representative of how the rest will go. The sooner you realize this, the better off you’ll be.
-The first step of any project is to grossly underestimate its complexity and difficulty. - Nicoll Hunt
 The funny thing about imposter syndrome: it only impacts those who ARE talented and accomplished. Narcissists don't suffer from it. Neither do the unqualified or those who lack self-awareness. @TantumVero
 The idea that people knew a thing or two in the '70s is strange to a lot of young programmers. - Donald Knuth
 The most secure code in the world is code which is never written. - Colin Percival
@@ -79,3 +75,7 @@ The best programs are the ones written when the programmer is supposed to be wor
 The best way to get the right answer ... is not to ask a question; it’s to post the wrong answer. - Cunningham’s Law
 The cleaner and nicer the program, the faster it's going to run. And if it doesn't it'll be easy to make it fast. - Joshua Bloch
 The dangerous man is the one who has only one idea, because then he'll fight and die for it. - Francis Crick.
+The difference between a framework and a library is you can test code that uses a library. - Michael Feathers
+The essence of philosophy is that a man should so live that his happiness shall depend as little as possible on external things. - Epictetus
+The first 18 years of your life is not representative of how the rest will go. The sooner you realize this, the better off you’ll be.
+The first step of any project is to grossly underestimate its complexity and difficulty. - Nicoll Hunt
