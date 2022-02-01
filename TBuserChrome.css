@@ -4,4 +4,5 @@
 * { font-size: 11pt !important; } 
 
 /* toolkit.legacyUserProfileCustomizations.stylesheets */
-toolbar { height: 75px }
+#navigator-toolbox { height: 150px !important; }
+
