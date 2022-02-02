@@ -2,9 +2,10 @@
 
 # dconf watch /
 
+shopt -s nullglob
 
-if [[ $(uname) == Linux ]]
-then
+# X window manager etc. settings
+function WMsettings () {
     UUIDS=$(gsettings get org.gnome.Terminal.ProfilesList list | tr -d "',")
     PALETTE="['rgb(7,54,66)', 'rgb(0,0,0)', 'rgb(85,85,85)', 'rgb(181,137,0)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']"
     A='org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:'
@@ -31,25 +32,29 @@ then
     do
         gsettings set "${WM}" "${a[$i]}" "${b[$i]}"
     done
-fi
+}
 
-mkdir ~/bin 2> /dev/null
+function dotsNbins () {
+    mkdir ~/bin 2> /dev/null
 
-FILES=".vimrc .gtkrc-2.0 .prsst.yml .bash_profile .bashrc .signatures .screenrc bin/*"
+    FILES=".vimrc .gtkrc-2.0 .prsst.yml .bash_profile .bashrc .signatures .screenrc bin/*"
 
-for FILE in ${FILES}
-do
-    rm -f ~/"${FILE}" 2> /dev/null
-    ln ~/src/dotfiles/"${FILE}" ~/"${FILE}"
-done
+    for FILE in ${FILES}
+    do
+        rm -f ~/"${FILE}" 2> /dev/null
+        ln ~/src/dotfiles/"${FILE}" ~/"${FILE}"
+    done
+}
 
-mkdir -p ~/.config/autostart 2> /dev/null
+function autostarts () {
+    mkdir -p ~/.config/autostart 2> /dev/null
 
-for FILE in .config/autostart/*
-do
-    rm -f ~/"${FILE}" 2> /dev/null
-    ln ~/src/dotfiles/"${FILE}" ~/"${FILE}"
-done
+    for FILE in .config/autostart/*
+    do
+        rm -f ~/"${FILE}" 2> /dev/null
+        ln ~/src/dotfiles/"${FILE}" ~/"${FILE}"
+    done
+}
 
 function mozilla_prefs () {
     if ! grep "${1}" "${2}" > /dev/null
@@ -59,77 +64,61 @@ function mozilla_prefs () {
 }
 
 function userChrome () {
-   for DIRS in "$@"
+   for DIR in "${@}"
    do
-        for POSSIBLE in ${DIRS}
-        do
-            if [[ -d "$POSSIBLE" ]]
-            then
-                echo "possible: ${POSSIBLE}"
-                CHROME="${POSSIBLE}"/chrome
-                mkdir "${CHROME}" 2> /dev/null
+       echo "${DIR}"
 
-                FILE="${CHROME}"/userChrome.css
-                rm "${FILE}" 2> /dev/null
-                ln ~/src/dotfiles/FFuserChrome.css "${FILE}"
+       CHROME="${DIR}"/chrome
+       mkdir "${CHROME}" 2> /dev/null
 
-                PREFS=${POSSIBLE}/prefs.js
-                STYLE='toolkit.legacyUserProfileCustomizations.stylesheets'
-                VALUE=true
-                mozilla_prefs "${STYLE}" "${PREFS}" "${VALUE}"
+       PREFS=${DIR}/prefs.js
+       STYLE='toolkit.legacyUserProfileCustomizations.stylesheets'
+       VALUE=true
+       mozilla_prefs "${STYLE}" "${PREFS}" "${VALUE}"
 
-                STYLE='browser.backspace_action'
-                VALUE=2
-                mozilla_prefs "${STYLE}" "${PREFS}" "${VALUE}"
+       FILE="${CHROME}"/userChrome.css
+       rm "${FILE}" 2> /dev/null
+       if [[ "${DIR}" =~ .*[Tt]hunderbird.* ]]
+       then
+           ln ~/src/dotfiles/TBuserChrome.css "${FILE}"
+        else
+           ln ~/src/dotfiles/FFuserChrome.css "${FILE}"
 
-                if [[ "${POSSIBLE}" =~ .*[Tt]hunderbird.* ]]
-                then
-                    DIR="${POSSIBLE}"/webaccountMail/outlook.office365.com
-                    mkdir -p "${DIR}" 2> /dev/null
-
-                    FILE="${DIR}"/msgFilterRules.dat
-                    rm "${FILE}" 2> /dev/null
-                    ln ~/src/dotfiles/msgFilterRules.dat "${FILE}"
-                fi
-            fi
-        done
+           STYLE='browser.backspace_action'
+           VALUE=2
+           mozilla_prefs "${STYLE}" "${PREFS}" "${VALUE}"
+        fi
     done
 }
 
+function outlook () {
+    for DIR in "${@}"
+    do
+        echo "${DIR}"
+
+        FILE="${DIR}"/msgFilterRules.dat
+        rm "${FILE}" 2> /dev/null
+        ln ~/src/dotfiles/msgFilterRules.dat "${FILE}"
+    done
+
+}
+
 # sigh, see: https://superuser.com/questions/1507251/firefox-has-two-default-profiles-default-release-and-default-which-one-sho
-FF="$HOME/.mozilla/firefox/*.default-release \
-    $HOME/.mozilla/firefox/*.default \
-    $HOME/Library/Application\ Support/Firefox/Profiles/*.default-release \
-    $HOME/Library/Application\ Support/Firefox/Profiles/*.default"
+FF=("${HOME}"/.mozilla/firefox/*.default* ${HOME}/Library/Application\ Support/Firefox/Profiles/*.default*)
+userChrome "${FF[@]}"
 
-for i in $(/bin/ls -d "${FF}" 2> /dev/null)
-do
-    DIR="${i}"/chrome
-    mkdir "${DIR}" 2> /dev/null
+TB=("${HOME}"/.thunderbird/*.default* "${HOME}"/Library/Thunderbird/Profiles/*.default*)
+userChrome "${TB[@]}"
 
-    FILE="${DIR}"/userChrome.css
-    # echo "FILE: ${FILE}"
-    rm "${FILE}" 2> /dev/null
-    ln ~/src/dotfiles/FFuserChrome.css "${FILE}"
-done
+OL=("${HOME}"/.thunderbird/*.default*/webaccountMail/outlook.office365*.com "${HOME}"/Library/Thunderbird/Profiles/*.default*/webaccountMail/outlook.office365*.com)
+outlook "${OL[@]}"
 
-TB="$HOME/.thunderbird/*.default \
-    $HOME/.thunderbird/*.default.release \
-    $HOME/Library/Thunderbird/Profiles/*.default \
-    $HOME/Library/Thunderbird/Profiles/*.default.release"
+if [[ $(uname) == Linux ]]
+then
+    WMSettings
+fi
 
-for i in $(/bin/ls -d "${TB}" 2> /dev/null)
-do
-    DIR="${i}"/chrome
-    mkdir -p "${DIR}" 2> /dev/null
-
-    DIR="${i}"/webaccountMail/outlook.office365.com
-    mkdir -p "${DIR}" 2> /dev/null
-    if ! grep 'toolkit.legacyUserProfileCustomizations.stylesheets' "${i}"/prefs.js > /dev/null
-    then
-        echo
-        'user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);' >> "${i}"/prefs.js
-    fi
-done
+dotsNbins
+autostarts
 
 # vim: wm=0
