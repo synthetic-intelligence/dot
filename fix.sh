@@ -115,7 +115,7 @@ outlook "${OL[@]}"
 
 if [[ $(uname) == Linux ]]
 then
-    WMSettings
+    WMsettings
 fi
 
 dotsNbins
