@@ -25,7 +25,7 @@ function WMsettings () {
     gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 
     WM=org.cinnamon.desktop.keybindings.wm
-    a=( close minimize move-to-workspace-right move-to-workspace-left )
+    a=( close minimize switch-to-workspace-right switch-to-workspace-left )
     b=( "['<Super>q']" "['<Super>m', '<Super>h']" "['<Super>Right']" "['<Super>Left']" )
     length=${#a[@]}
     for (( i=0; i<length; i++ ))
