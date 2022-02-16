@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=conky -dc ~/src/conky/nwsmap.conf
+Exec=conky -dc /home/beaty/src/conky/nwsmap.conf
 X-GNOME-Autostart-enabled=true
 NoDisplay=false
 Hidden=false
