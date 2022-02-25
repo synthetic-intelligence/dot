@@ -25,10 +25,17 @@ function WMsettings () {
     gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 
     WM=org.cinnamon.desktop.keybindings.wm
-    a=( close minimize move-to-workspace-right move-to-workspace-left )
+    a=( close minimize switch-to-workspace-right switch-to-workspace-left )
     b=( "['<Super>q']" "['<Super>m', '<Super>h']" "['<Super>Right']" "['<Super>Left']" )
-    length=${#a[@]}
-    for (( i=0; i<length; i++ ))
+    for (( i=0; i<${#a[@]}; i++ ))
+    do
+        gsettings set "${WM}" "${a[$i]}" "${b[$i]}"
+    done
+
+    a=( auto-raise focus-mode )
+    b=( "true" "sloppy" )
+    WM=org.cinnamon.desktop.wm.preferences
+    for (( i=0; i<${#a[@]}; i++ ))
     do
         gsettings set "${WM}" "${a[$i]}" "${b[$i]}"
     done
@@ -104,7 +111,7 @@ function outlook () {
 }
 
 # sigh, see: https://superuser.com/questions/1507251/firefox-has-two-default-profiles-default-release-and-default-which-one-sho
-FF=("${HOME}"/.mozilla/firefox/*.default* ${HOME}/Library/Application\ Support/Firefox/Profiles/*.default*)
+FF=("${HOME}"/.mozilla/firefox/*.default* "${HOME}"/Library/Application\ Support/Firefox/Profiles/*.default*)
 userChrome "${FF[@]}"
 
 TB=("${HOME}"/.thunderbird/*.default* "${HOME}"/Library/Thunderbird/Profiles/*.default*)
@@ -115,7 +122,7 @@ outlook "${OL[@]}"
 
 if [[ $(uname) == Linux ]]
 then
-    WMSettings
+    WMsettings
 fi
 
 dotsNbins

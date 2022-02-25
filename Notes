@@ -1,1 +1,3 @@
 dconf watch /
+
+dconf dump /org/cinnamon/
