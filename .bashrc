@@ -226,3 +226,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # vim: wm=0
 echo "Done with .bashrc"
+source "$HOME/.cargo/env"
