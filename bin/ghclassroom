@@ -1,0 +1,23 @@
+#! /usr/bin/env bash
+# msu-denver-cs CS39ACSpring2020Assignment01
+
+if [[ $# != 2 ]]
+then
+    echo "${0} organization assignment"
+    exit 1
+fi
+
+if [[ ! -d "${2}" ]]
+then
+    mkdir "${2}"
+fi
+cd "${2}" || exit
+
+REPOS=$(gh repo list "${1}" --limit 10000 | grep "${1}/${2}" | cut -f 1)
+
+for REPO in ${REPOS}
+do
+    # git clone git@github.com:"${REPO}".git
+    echo "${REPO}"
+    gh repo clone "${REPO}"
+done

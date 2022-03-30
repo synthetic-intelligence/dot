@@ -1,6 +1,7 @@
 [Desktop Entry]
 Type=Application
-Exec= cd /home/beaty/src/conky && conky -dc nws.conf
+Path=/home/beaty/src/conky
+Exec=conky -dc nws.conf
 X-GNOME-Autostart-enabled=true
 NoDisplay=false
 Hidden=false

@@ -1,0 +1,12 @@
+git config user.name "Steve Beaty" && git config user.email "drsjb80@gmail.com"
+git config user.name "Steve Beaty" && git config user.email "beatys@msudenver.edu"
+----
+gh auth login
+----
+# Mac and Linux
+git config --global core.autocrlf input
+# Windows
+git config --global core.autocrlf true
+----
+# git config --local --replace-all user.name "Steve Beaty"
+# git config --local --replace-all user.email "drsjb80@gmail.com"
