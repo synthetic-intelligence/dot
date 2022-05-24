@@ -55,6 +55,9 @@ alias lt='lshelper -t'
 alias llt='lshelper -lt'
 alias git-color='git -c color.ui=always'
 
+alias rmnonimage="rm $(file * | grep -v image | sed -e 's/:.*//')"
+alias rmhtml="rm $(file * | grep HTML | sed -e 's/:.*//')"
+
 function tolower () { echo "$*" | tr '[:upper:]' '[:lower:]'; }
 function toupper () { echo "$*" | tr '[:lower:]' '[:upper:]'; }
 function doc2pdf () {
@@ -226,4 +229,3 @@ export NVM_DIR="$HOME/.nvm"
 
 # vim: wm=0
 echo "Done with .bashrc"
-source "$HOME/.cargo/env"
