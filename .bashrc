@@ -147,7 +147,8 @@ alias merge="git merge"
 alias pull="git pull"
 alias push="git push"
 alias status="git status"
-function delete_branch () {
+alias git_push_this_branch="git push origin $(git branch --show-current)"
+function git_delete_branch () {
     git branch -d "$1" && git push origin --delete "$1"
 }
 

@@ -111,10 +111,10 @@ function outlook () {
 }
 
 # sigh, see: https://superuser.com/questions/1507251/firefox-has-two-default-profiles-default-release-and-default-which-one-sho
-FF=("${HOME}"/.mozilla/firefox/*.default* "${HOME}"/Library/Application\ Support/Firefox/Profiles/*.default*)
+FF=("${HOME}"/.mozilla/firefox/* "${HOME}"/Library/Application\ Support/Firefox/Profiles/*)
 userChrome "${FF[@]}"
 
-TB=("${HOME}"/.thunderbird/*.default* "${HOME}"/Library/Thunderbird/Profiles/*.default*)
+TB=("${HOME}"/.thunderbird/* "${HOME}"/Library/Thunderbird/Profiles/*)
 userChrome "${TB[@]}"
 
 OL=("${HOME}"/.thunderbird/*.default*/webaccountMail/outlook.office365*.com "${HOME}"/Library/Thunderbird/Profiles/*.default*/webaccountMail/outlook.office365*.com)

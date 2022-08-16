@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# for OSX, install timeout via brew install coreutils
+
 ## Uncomment to disable git info
 #POWERLINE_GIT=0
 
