@@ -1,4 +1,5 @@
 #! /bin/bash
+#! /bin/bash -x
 
 # dconf watch /
 
@@ -64,7 +65,7 @@ function autostarts () {
 }
 
 function mozilla_prefs () {
-    if ! grep "${1}" "${2}" > /dev/null
+    if [[ $(grep "${1}" "${2}") == "" ]]
     then
         echo 'user_pref("'"${1}"'", "'"${3}"'");' >> "${2}"
     fi
