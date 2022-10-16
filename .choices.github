@@ -2,6 +2,7 @@ git config user.name "Steve Beaty" && git config user.email "drsjb80@gmail.com"
 git config user.name "Steve Beaty" && git config user.email "beatys@msudenver.edu"
 ----
 gh auth login
+git config  url."git@github.com:".insteadOf "https://github.com/"
 ----
 # Mac and Linux
 git config --global core.autocrlf input
