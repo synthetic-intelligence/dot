@@ -55,6 +55,9 @@ alias lt='lshelper -t'
 alias llt='lshelper -lt'
 alias git-color='git -c color.ui=always'
 
+alias rmnonimage="rm $(file * | grep -v image | sed -e 's/:.*//')"
+alias rmhtml="rm $(file * | grep HTML | sed -e 's/:.*//')"
+
 function tolower () { echo "$*" | tr '[:upper:]' '[:lower:]'; }
 function toupper () { echo "$*" | tr '[:lower:]' '[:upper:]'; }
 function doc2pdf () {
@@ -144,7 +147,8 @@ alias merge="git merge"
 alias pull="git pull"
 alias push="git push"
 alias status="git status"
-function delete_branch () {
+alias git_push_this_branch="git push origin $(git branch --show-current)"
+function git_delete_branch () {
     git branch -d "$1" && git push origin --delete "$1"
 }
 
@@ -226,20 +230,3 @@ export NVM_DIR="$HOME/.nvm"
 
 # vim: wm=0
 echo "Done with .bashrc"
-source "$HOME/.cargo/env"
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/beaty/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/beaty/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/beaty/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/beaty/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-

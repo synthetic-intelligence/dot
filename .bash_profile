@@ -92,4 +92,3 @@ fi
 PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:${PATH}"
 export PATH
 echo "Done with .bash_profile"
-source "$HOME/.cargo/env"
