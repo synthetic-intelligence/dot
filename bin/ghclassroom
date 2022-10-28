@@ -13,7 +13,9 @@ then
 fi
 cd "${2}" || exit
 
-REPOS=$(gh repo list "${1}" --limit 10000 | grep "${1}/${2}" | cut -f 1)
+LOWER=$(echo "${2}" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+
+REPOS=$(gh repo list "${1}" --limit 10000 | grep "${1}/${LOWER}" | cut -f 1)
 
 for REPO in ${REPOS}
 do

@@ -82,6 +82,9 @@ function userChrome () {
        PREFS=${DIR}/prefs.js
        STYLE='toolkit.legacyUserProfileCustomizations.stylesheets'
        VALUE=true
+
+       STYLE="widget.gtk.overlay-scrollbars.enabled"
+       VALUE=false
        mozilla_prefs "${STYLE}" "${PREFS}" "${VALUE}"
 
        FILE="${CHROME}"/userChrome.css

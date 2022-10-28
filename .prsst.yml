@@ -30,8 +30,8 @@ feeds:
 - https://www.penaddict.com/blog?format=rss
 - https://tidbits.com/feeds/tidbits_blurb.rss
 - https://www.reddit.com/r/todayilearned.rss
-font-family: Arial
-font-size: 14
+font-family: FreeSans
+font-size: 11
 font-slant: roman
 font-weight: normal
 growright: false
