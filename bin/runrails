@@ -1,7 +1,7 @@
 #! /usr/bin/env -S bash -ex
 
 bundle install
-yarn install --check-files # -std=c++14
+# yarn install --check-files # -std=c++14
 # rails webpacker:install
 # rails webpacker:compile
 
@@ -31,5 +31,7 @@ then
     rails db:migrate RAILS_ENV=test
 fi
 
+# bin/rails tmp:clear
 rails test
+# bin/rails tmp:clear
 rails server
