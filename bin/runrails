@@ -9,18 +9,7 @@ if [[ ! -e db/development.sqlite3 ]]
 then
     echo "migrating development"
     rails db:migrate
-
-    lines=`wc -l db/seeds.rb | cut -d ' ' -f 1`
-    if [[ $lines > 7 ]]
-    then
-        echo "seeding locally"
-        rails db:seed
-    elif [[ -e ~/seeds.rb ]]
-    then
-        echo "seeding from ~/seeds.rb"
-        cp -f ~/seeds.rb db
-        rails db:seed
-    fi
+    rails db:seed
 else
     echo "using db/development.sqlite3"
 fi
