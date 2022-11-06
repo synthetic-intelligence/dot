@@ -1,7 +1,7 @@
 #! /usr/bin/env -S bash -ex
 
 bundle install
-yarn install --check-files # -std=c++14
+# yarn install --check-files # -std=c++14
 # rails webpacker:install
 # rails webpacker:compile
 
