@@ -31,5 +31,7 @@ then
     rails db:migrate RAILS_ENV=test
 fi
 
+# bin/rails tmp:clear
 rails test
+# bin/rails tmp:clear
 rails server
