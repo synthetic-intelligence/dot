@@ -4,8 +4,8 @@ feeds:
 - https://portswigger.net/daily-swig/rss
 - https://rssfeeds.9news.com/kusa/home
 - http://feeds.denverpost.com/dp-news-breaking
+- https://krebsonsecurity.com/feed/
 - https://feeds.feedburner.com/NakedSecurity
-- https://www.schneier.com/feed/atom
 - http://www.nws.noaa.gov/data/current_obs/KDEN.rss
 - https://www.merriam-webster.com/wotd/feed/rss2
 - http://feeds.bbci.co.uk/news/world/rss.xml?edition=uk
@@ -13,6 +13,7 @@ feeds:
 - http://rss.slashdot.org/Slashdot/slashdotApple
 - http://rss.slashdot.org/Slashdot/slashdotHardware
 - https://us-cert.cisa.gov/ncas/all.xml
+- https://pipesmagazine.com/feed/
 - https://www.sans.org/blog/feed.xml
 - https://addons.mozilla.org/en-US/developers/feed?privaterss=96cd0dc3-3a74-b43d-b5b5-c8eda8cc356f
 - https://www.netresec.com/rss.ashx
@@ -31,8 +32,8 @@ feeds:
 - https://tidbits.com/feeds/tidbits_blurb.rss
 - https://www.reddit.com/r/todayilearned.rss
 font-family: FreeSans
-font-size: 11
+font-size: 14
 font-slant: roman
 font-weight: normal
 growright: false
-reload: 120
+reload: 110.5

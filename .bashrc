@@ -54,7 +54,15 @@ alias llr='lshelper -lR'
 alias lt='lshelper -t'
 alias llt='lshelper -lt'
 alias git-color='git -c color.ui=always'
-alias pr='git checkout -b drb80 && git commit app db test config -m "drb80" && gh pr create'
+alias pr='git checkout -b drb80 && git commit app db test config public -m "drb80" && gh pr create'
+
+function gitadddirectory () {
+    git rm --cached "$*"
+    rm -rf "$*/.git"
+    git add "$*"
+    git commit -am "Adding $*"
+    git push
+}
 
 alias rmnonimage="rm $(file * | grep -v image | sed -e 's/:.*//')"
 alias rmhtml="rm $(file * | grep HTML | sed -e 's/:.*//')"

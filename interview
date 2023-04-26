@@ -1,3 +1,4 @@
+Interview question: Did you set up any load balancer or do all the clients have to go through specific node ports?
 Interview question: Do you prefer working on infrastructure or application development like back end or front end or both?
 Interview question: Would you say that most of the applications that you have written have been web based?
 Interview question: What Would you say that some of the biggest challenges you have faced and what have you done to overcome them?
@@ -38,4 +39,3 @@ Interview question: Unit testing, what framework did you say you used?
 Interview question: Your resume that you are familiar with Agile, is that just from an educational experience?
 Interview question: Can you walk me through the process of getting an application to run in Docker?
 Interview question: When you created your Kubernetes cluster on your raspberry pi’s, did you use any specific version of Kubernetes?
-Interview question: Did you set up any load balancer or do all the clients have to go through specific node ports?
