@@ -4,8 +4,8 @@ feeds:
 - https://portswigger.net/daily-swig/rss
 - https://rssfeeds.9news.com/kusa/home
 - http://feeds.denverpost.com/dp-news-breaking
+- https://krebsonsecurity.com/feed/
 - https://feeds.feedburner.com/NakedSecurity
-- https://www.schneier.com/feed/atom
 - http://www.nws.noaa.gov/data/current_obs/KDEN.rss
 - https://www.merriam-webster.com/wotd/feed/rss2
 - http://feeds.bbci.co.uk/news/world/rss.xml?edition=uk
@@ -36,4 +36,4 @@ font-size: 16
 font-slant: roman
 font-weight: normal
 growright: false
-reload: 120
+reload: 110.5
