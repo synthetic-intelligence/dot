@@ -4,42 +4,43 @@
 if [[ -z "$PS1" ]]; then return; fi
 if [[ "$BASH_VERSION" != "" && "$BASHRC" == "YES" ]]; then exit; fi
 export BASHRC=YES
-echo "Starting in .bashrc"
+echo 'Starting in .bashrc'
 
-# shellcheck source=/Users/stevebeaty/bin/bash-powerline.sh
-if [[ -e ${HOME}/bin/bash-powerline.sh ]]
+if [[ -r ${HOME}/bin/bash-powerline.sh ]]
 then
-    . "${HOME}"/bin/bash-powerline.sh
+# shellcheck source=/Users/stevebeaty/bin/bash-powerline.sh
+source "${HOME}"/bin/bash-powerline.sh
 fi
 
-# shellcheck source=/etc/bash_completion
 if [[ -r /etc/bash_completion ]]
 then
-    . /etc/bash_completion
+# shellcheck source=/etc/bash_completion
+source /etc/bash_completion
 fi
 
-# shellcheck source=/usr/local/etc/bash_completion
 if [[ -r /usr/local/etc/bash_completion ]]
 then
-    . /usr/local/etc/bash_completion
+# shellcheck source=/usr/local/etc/bash_completion
+source /usr/local/etc/bash_completion
 fi
 
-# shellcheck source=/Users/stevebeaty/.bashrc_private
 if [[ -r ${HOME}/.bashrc_private ]]
 then
-    . "${HOME}"/.bashrc_private
+# shellcheck source=/Users/stevebeaty/.bashrc_private
+    source "${HOME}"/.bashrc_private
 fi
 
 if [[ $(uname) == Darwin ]]; then
     function lshelper () {
         CLICOLOR_FORCE=1 /bin/ls -CFG "${@:1:1}" "${@:2}" | less -ERXF
     }
-    alias o='open'
+    function o () { open "${*:-.}" ; }
 elif [[ $(uname) == Linux ]]; then
     function lshelper () {
         /bin/ls -CF --color=always "${@:1:1}" "${@:2}" | less -ERXF
     }
-    alias o='xdg-open'
+    function o () { xdg-open "${*:-.}" ; }
+
     # OS=$(head -1 /etc/issue | cut -d " " -f 1)
 fi
 
@@ -65,8 +66,8 @@ function gitadddirectory () {
     git push
 }
 
-alias rmnonimage="rm $(file * | grep -v image | sed -e 's/:.*//')"
-alias rmhtml="rm $(file * | grep HTML | sed -e 's/:.*//')"
+alias rmnonimage='rm $(file * | grep -v image | sed -e "s/:.*//")'
+alias rmhtml='rm $(file * | grep HTML | sed -e "s/:.*//")'
 
 function tolower () { echo "$*" | tr '[:upper:]' '[:lower:]'; }
 function toupper () { echo "$*" | tr '[:lower:]' '[:upper:]'; }
@@ -105,7 +106,7 @@ function unzipper () {
     done
 }
 
-alias p=python3
+alias p='python3'
 alias ut='python3 -m unittest'
 alias be='bundle exec'
 alias beep='echo -n ""'
@@ -115,7 +116,7 @@ alias rmthumbs="find -E . -regex '.*\.(jpg|gif|png)' -a -size -7k -exec rm '{}' 
 
 alias unquarantine='xattr -dr com.apple.quarantine'
 
-function cd () { builtin cd "$*" && lshelper; }
+function cd () { builtin cd "$*" && lshelper .; }
 function pd () {
     if [[ $# == 0 ]]
     then
@@ -139,7 +140,7 @@ function m4a2mp3() {
 
 alias ntpstat='ntpdc -c peers'
 alias epoch='date -r'
-alias ch=choice
+alias ch='choice'
 alias randompass='openssl rand -base64 12'
 
 function addcom () {
@@ -150,14 +151,14 @@ function addcom () {
     done
 }
 
-alias branch="git branch"
-alias co="git checkout"
-alias commit="git commit"
-alias merge="git merge"
-alias pull="git pull"
-alias push="git push"
-alias status="git status"
-alias git_push_this_branch="git push origin $(git branch --show-current)"
+alias branch='git branch'
+alias co='git checkout'
+alias commit='git commit'
+alias merge='git merge'
+alias pull='git pull'
+alias push='git push'
+alias status='git status'
+alias git_push_this_branch='git push origin $(git branch --show-current)'
 function git_delete_branch () {
     git branch -d "$1" && git push origin --delete "$1"
 }
@@ -181,10 +182,10 @@ export EDITOR=vi
 export PYTHONSTARTUP=~/.pythonrc
 
 function sc () {
-    /Users/stevebeaty//src/schemacrawler-16.10.1-distribution/_schemacrawler/schemacrawler.sh --command=schema --database="$1" --info-level=standard --server=sqlite --output-format=png --output-file=schema.png
+    /Users/stevebeaty/src/schemacrawler-16.10.1-distribution/_schemacrawler/schemacrawler.sh --no-info --command=schema --database="$1" --info-level=standard --server=sqlite --output-format=png --output-file=schema.png
 }
-alias rss="ps aux | sort -n -k 4"
-alias gmt="zdump gmt"
+alias rss='ps aux | sort -n -k 4'
+alias gmt='zdump gmt'
 alias phil='zdump Asia/Manila'
 alias it='zdump Europe/Rome'
 alias c='clear'
@@ -214,10 +215,10 @@ alias prsst='python3 "${HOME}"/src/PRSST/prsst/main.py &'
 alias stealth='sudo ifconfig en0 lladdr 00:11:22:33:44:55'
 alias unstealth='sudo ifconfig en1 lladdr a4:5e:60:e8:b9:05'
 
-alias rrmyseeds="bundle install && yarn install --check-files && rails db:migrate && \cp -f ~/seeds.rb db && rails db:seed && rails server"
-alias rrseedless="bundle install && yarn install --check-files && rails db:migrate && rails db:seed && rails server"
+alias rrmyseeds='bundle install && yarn install --check-files && rails db:migrate && \cp -f ~/seeds.rb db && rails db:seed && rails server'
+alias rrseedless='bundle install && yarn install --check-files && rails db:migrate && rails db:seed && rails server'
 
-alias cleanrails="find . -depth -name node_modules -o -name cache -exec rm -rf '{}' ';'"
+alias cleanrails='find . -depth -name node_modules -o -name cache -exec rm -rf "{}" ";"'
 alias railspull='git pull git@github.com:msu-denver-cs/${PWD##*/}.git'
 
 alias ramdisk='mkdir /tmp/ramdisk && chmod 777 /tmp/ramdisk && sudo mount -t tmpfs -o size=1G myramdisk /tmp/ramdisk'
@@ -230,6 +231,7 @@ then
 fi
 
 # added by travis gem
+# shellcheck source=/Users/beatys/.travis/travis.sh
 [ -f /Users/beatys/.travis/travis.sh ] && source /Users/beatys/.travis/travis.sh
 
 export NVM_DIR="$HOME/.nvm"

@@ -1,7 +1,6 @@
 delay: 10
 feeds:
 - https://www.fedscoop.com/feed
-- https://portswigger.net/daily-swig/rss
 - https://rssfeeds.9news.com/kusa/home
 - http://feeds.denverpost.com/dp-news-breaking
 - https://krebsonsecurity.com/feed/

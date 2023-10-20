@@ -20,6 +20,8 @@ export ARCH
 
 possible="$HOME/bin \
     $HOME/.rbenv/shims \
+    /opt/local/bin \
+    /opt/homebrew/bin \
     /usr/local/bin \
     /usr/local/sbin \
     /usr/bin \
@@ -27,7 +29,6 @@ possible="$HOME/bin \
     /sbin \
     /usr/sbin \
     /usr/bin/X11 \
-    /opt/local/bin \
     /local/sbin \
     /etc/alternatives \
     /Applications/Docker.app/Contents/Resources/bin \
