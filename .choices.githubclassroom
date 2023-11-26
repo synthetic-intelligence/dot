@@ -1,0 +1,5 @@
+gh classroom clone student-repos
+----
+gh extension install github/gh-classroom
+gh classroom list
+gh classroom assignments
