@@ -19,9 +19,9 @@ ARCH=$(/usr/bin/uname -p)
 export ARCH
 
 possible="$HOME/bin \
-    $HOME/.rbenv/shims \
     /opt/local/bin \
     /opt/homebrew/bin \
+    /opt/podman/bin \
     /usr/local/bin \
     /usr/local/sbin \
     /usr/bin \
@@ -89,3 +89,4 @@ then
 fi
 
 echo "Done with .bash_profile"
+. "$HOME/.cargo/env"

@@ -18,6 +18,12 @@ then
 source /etc/bash_completion
 fi
 
+if [[ -r /opt/homebrew/etc/bash_completion ]]
+then
+# shellcheck source=/etc/bash_completion
+source /opt/homebrew/etc/bash_completion
+fi
+
 if [[ -r /usr/local/etc/bash_completion ]]
 then
 # shellcheck source=/usr/local/etc/bash_completion
@@ -44,6 +50,7 @@ elif [[ $(uname) == Linux ]]; then
     # OS=$(head -1 /etc/issue | cut -d " " -f 1)
 fi
 
+alias venv='python3 -m venv venv'
 alias fixff='cd ~/Library/Application\ Support/Firefox/Profiles/*.default/sessionstore-backups'
 alias shrug='echo ¯\\\_\(ツ\)_/¯'
 alias listening='netstat -anp tcp | grep "LISTEN"'
@@ -112,7 +119,8 @@ alias be='bundle exec'
 alias beep='echo -n ""'
 alias utime='date -r'
 
-alias rmthumbs="find -E . -regex '.*\.(jpg|gif|png)' -a -size -7k -exec rm '{}' ';'"
+# alias rmthumbs="find -E . -regex '.*\.(jpg|gif|png)' -a -size -7k -exec rm '{}' ';'"
+alias rmthumbs="find . -name '*._img*' -print -exec rm '{}' ';'"
 
 alias unquarantine='xattr -dr com.apple.quarantine'
 
@@ -163,7 +171,7 @@ function git_delete_branch () {
     git branch -d "$1" && git push origin --delete "$1"
 }
 
-function md { showdown makehtml -i "$1" -o "${1%%.md}".html --tables --simplifiedAutoLink; }
+function md { showdown makehtml -i "$1" -o "${1%%.md}".html -c tables; }
 
 function timer { (sleep $((60 * $*)); echo -ne \\a\\a\\a\\a) & }
 function minutes { (sleep $((60 * $*)); echo -ne \\a\\a\\a\\a) & }
@@ -210,7 +218,7 @@ function shuf () {
     sort -R "$@" | head -n 1
 }
 
-alias prsst='python3 "${HOME}"/src/PRSST/prsst/main.py &'
+alias prsst='python3.11 "${HOME}"/src/PRSST/prsst/main.py &'
 
 alias stealth='sudo ifconfig en0 lladdr 00:11:22:33:44:55'
 alias unstealth='sudo ifconfig en1 lladdr a4:5e:60:e8:b9:05'
@@ -242,3 +250,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # vim: wm=0
 echo "Done with .bashrc"
+. "$HOME/.cargo/env"

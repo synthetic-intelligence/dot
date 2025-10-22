@@ -1,15 +1,14 @@
-#! /usr/bin/env -S bash -ex
+#! /usr/bin/env -S bash -e
+
+git pull
 
 bundle install
-# yarn install --check-files # -std=c++14
-# rails webpacker:install
-# rails webpacker:compile
 
 if [[ ! -e db/development.sqlite3 ]]
 then
     echo "migrating development"
     rails db:migrate
-    ! rails db:seed
+    rails db:seed
 else
     echo "using db/development.sqlite3"
 fi
@@ -22,5 +21,6 @@ fi
 
 # bin/rails tmp:clear
 rails test
+# rails test:system
 # bin/rails tmp:clear
 rails server
