@@ -1,0 +1,1 @@
+/Users/beatys/Library/Scripts/Best.scpt
