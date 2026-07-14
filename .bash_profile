@@ -32,6 +32,8 @@ possible="$HOME/bin \
     /local/sbin \
     /etc/alternatives \
     /Applications/Docker.app/Contents/Resources/bin \
+    /Users/beatys/.ebcli-virtual-env/executables \
+    /Users/beatys/Applications/Docker.app/Contents/Resources/bin \
     "
 
 extraman="/usr/share/man"
@@ -88,5 +90,9 @@ then
     eval "$(rbenv init -)"
 fi
 
-echo "Done with .bash_profile"
 . "$HOME/.cargo/env"
+
+echo "Done with .bash_profile"
+
+# Created by `pipx` on 2026-01-25 21:55:26
+export PATH="$PATH:/Users/beatys/.local/bin"

@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 # aliases and functions
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path bash)"
+
 # if non-interactive, don't write any output
 if [[ -z "$PS1" ]]; then return; fi
 if [[ "$BASH_VERSION" != "" && "$BASHRC" == "YES" ]]; then exit; fi
@@ -51,7 +53,7 @@ elif [[ $(uname) == Linux ]]; then
 fi
 
 alias venv='python3 -m venv venv'
-alias fixff='cd ~/Library/Application\ Support/Firefox/Profiles/*.default/sessionstore-backups'
+alias fixff='cd ~/Library/Application\ Support/Firefox/Profiles/*.default-esr/sessionstore-backups && cp previous.jsonlz4 ../sessionstore.jsonlz4'
 alias shrug='echo ¯\\\_\(ツ\)_/¯'
 alias listening='netstat -anp tcp | grep "LISTEN"'
 alias ls='lshelper'
@@ -113,6 +115,10 @@ function unzipper () {
     done
 }
 
+function zip () {
+    command zip -r "$1".zip "$1" -x '*.git*'
+}
+
 alias p='python3'
 alias ut='python3 -m unittest'
 alias be='bundle exec'
@@ -124,19 +130,34 @@ alias rmthumbs="find . -name '*._img*' -print -exec rm '{}' ';'"
 
 alias unquarantine='xattr -dr com.apple.quarantine'
 
-function cd () { builtin cd "$*" && lshelper .; }
+function ifvenv() {
+    if [ -e venv ]
+    then
+        echo "---- Virtual environment found, activating ----";
+        source venv/bin/activate;
+    fi
+}
+
+function cd () {
+    builtin cd "$*";
+    ifvenv;
+    lshelper .;
+}
+
 function pd () {
     if [[ $# == 0 ]]
     then
-        pushd || return
+        popd || return
     else
-        pushd "$*" || return
+        pushd "$*";
+        ifvenv;
     fi
 }
+
 function deepgrep () { find . -type f -not -name '*\.svn*' -not -name '*,v' -exec grep -I "$*" '{}' ';' -print; }
 function deepgrepi () { find . -type f -not -name '*\.svn*' -not -name '*,v' -exec grep -i -I "$*" '{}' ';' -print; }
 
-function rmemptydir () { find "$*" -depth -type d -empty -exec rmdir '{}' ';' ; }
+function rmemptydir () { find "$*" -depth -type d -empty -print -a -exec rmdir '{}' ';' ; }
 
 # ## front, %% end
 function m4a2mp3() {
@@ -218,7 +239,7 @@ function shuf () {
     sort -R "$@" | head -n 1
 }
 
-alias prsst='python3.11 "${HOME}"/src/PRSST/prsst/main.py &'
+alias prsst='python3 "${HOME}"/src/PRSST/prsst/main.py &'
 
 alias stealth='sudo ifconfig en0 lladdr 00:11:22:33:44:55'
 alias unstealth='sudo ifconfig en1 lladdr a4:5e:60:e8:b9:05'
@@ -248,6 +269,13 @@ export NVM_DIR="$HOME/.nvm"
 # shellcheck source=/Users/stevebeaty/.nvm/bash_completion
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+. "$HOME/.cargo/env"
+
+# Created by `pipx` on 2026-01-25 21:55:26
+export PATH="$PATH:/Users/beatys/.local/bin"
+
+# OpenClaw Completion
+[ -f "/Users/beatys/.openclaw/completions/openclaw.bash" ] && source "/Users/beatys/.openclaw/completions/openclaw.bash"
+
 # vim: wm=0
 echo "Done with .bashrc"
-. "$HOME/.cargo/env"

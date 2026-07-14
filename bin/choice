@@ -1,57 +1,92 @@
 #!/usr/bin/env bash
-#!/usr/bin/env -S bash -e
+set -euo pipefail
+# set -x
 
-filename=".choices"
+# Script to execute commands from a choices file
+# Usage: script.sh [-f filename] [choice_number] [additional_args...]
 
-# see if there's a '-f filename'
-if [[ "$1" == "-f" ]]
-then
-    # use it for the commands
+readonly DEFAULT_FILENAME=".choices"
+filename="$DEFAULT_FILENAME"
+
+# Parse -f flag for custom filename
+if [[ "${1:-}" == "-f" ]]; then
+    if [[ -z "${2:-}" ]]; then
+        echo "Error: -f requires a filename argument" >&2
+        exit 1
+    fi
     filename="$2"
-    shift
-    shift
-elif [[ ! -r $filename ]]
-then
-    # otherwise, look in the current directory for a '.choices' file and
-    # use that. if there isn't one here, look in parent directories until
-    # there are no more parent directories.
-    prefix=.
-    while true
-    do
-        absolute=$(cd $prefix || exit; pwd)
+    shift 2
+fi
 
-        if [[ -r "$absolute/$filename" ]]
-        then
-            filename=$absolute/$filename
+# Find the choices file if it's not directly readable
+if [[ ! -r "$filename" ]]; then
+    prefix="."
+    found=false
+    
+    while true; do
+        absolute=$(cd "$prefix" && pwd)
+        
+        if [[ -r "$absolute/$DEFAULT_FILENAME" ]]; then
+            filename="$absolute/$DEFAULT_FILENAME"
+            found=true
             break
         fi
-
-        if [[ "$absolute" = "/" ]]
-        then
-            echo "No $filename file found, exiting"
-            exit 1
+        
+        if [[ "$absolute" == "/" ]]; then
+            break
         fi
-
-        prefix=$prefix/..
+        
+        prefix="$prefix/.."
     done
+    
+    if [[ "$found" == false ]]; then
+        echo "Error: No $DEFAULT_FILENAME file found" >&2
+        exit 1
+    fi
 fi
 
-# if the user pre-supplied a number, use that.
-if [[ "$1" != "" ]]
-then
-    a=$1
+# Verify the file is readable
+if [[ ! -r "$filename" ]]; then
+    echo "Error: Cannot read file: $filename" >&2
+    exit 1
+fi
+
+# If user pre-supplied a choice number, use it directly
+if [[ -n "${1:-}" && "$1" =~ ^[0-9]+$ ]]; then
+    choice_num="$1"
     shift
-    echo "$(sed -ne "$a,$a p" "$filename")" "$*"
-    eval "$(sed -ne "$a,$a p" "$filename")" "$*"
-    exit
+    
+    # Get the command at the specified line
+    command=$(sed -n "${choice_num}p" "$filename")
+    
+    if [[ -z "$command" ]]; then
+        echo "Error: No command found at line $choice_num" >&2
+        exit 1
+    fi
+    
+    echo "$command $*"
+    eval "$command $*"
+    exit 0
 fi
 
+# Present interactive menu
 IFS=$'\n'
-
-# otherwise, give them a choice and remember it in their history.
-select CHOICE in $(cat "$filename")
-do
-    history -s "$CHOICE"
-    eval "$CHOICE" "$*"
-    break
+PS3="Enter choice number (or 'q' to quit): "
+select choice in $(cat "$filename"); do
+    # Check if user wants to quit
+    if [[ "$REPLY" == "q" || "$REPLY" == "Q" ]]; then
+        echo "Quitting..."
+        exit 0
+    fi
+    
+    if [[ -n "$choice" ]]; then
+        # Add to bash history
+        history -s "$choice"
+        
+        # Execute the chosen command with any additional arguments
+        eval "$choice $*"
+        break
+    else
+        echo "Invalid selection" >&2
+    fi
 done

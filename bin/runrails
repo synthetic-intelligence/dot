@@ -7,8 +7,8 @@ bundle install
 if [[ ! -e db/development.sqlite3 ]]
 then
     echo "migrating development"
-    rails db:migrate
-    rails db:seed
+    ./bin/rails db:migrate
+    ./bin/rails db:seed
 else
     echo "using db/development.sqlite3"
 fi
@@ -16,11 +16,11 @@ fi
 if [[ ! -e db/test.sqlite3 ]]
 then
     echo "migrating test"
-    rails db:migrate RAILS_ENV=test
+    ./bin/rails db:migrate RAILS_ENV=test
 fi
 
 # bin/rails tmp:clear
-rails test
+./bin/rails test
 # rails test:system
 # bin/rails tmp:clear
-rails server
+./bin/rails server
